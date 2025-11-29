@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Image, ImageSourcePropType, Text, View } from "react-native";
 
 
-const ProductCard = ({isFavorite , imgSrc , title , price}: {isFavorite: boolean, imgSrc: ImageSourcePropType , title : string , price: number}) => {
+const ProductCard = ({isFavorite , imgSrc , title , price , bgColor}: {isFavorite: boolean, imgSrc: ImageSourcePropType , title : string , price: number , bgColor?: string}) => {
 
     const [isFavorited, setIsFavorited] = useState<boolean>(isFavorite);
 
@@ -14,9 +14,10 @@ const ProductCard = ({isFavorite , imgSrc , title , price}: {isFavorite: boolean
         borderRadius: 18,
         elevation: 1,
         position: "relative",
-        backgroundColor: "white",
+        backgroundColor: bgColor ? bgColor : "white",
         paddingVertical: 20,
-        paddingHorizontal: 16
+        paddingHorizontal: 16,
+        marginRight: 24
     }}>
         <Heart style={{
             position: "absolute",

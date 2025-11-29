@@ -14,6 +14,8 @@ export interface FruitDish {
 //   tocart
 }
 
+export const categories = ["Fresh" , "Cooked" , "Drinks" , "Savory"]
+
 export const fruitDishes: FruitDish[] = [
   // Fresh Category
   {
@@ -23,7 +25,7 @@ export const fruitDishes: FruitDish[] = [
     category: "fresh",
     qty: 1,
     isHot: false,
-    isFavorite: true,
+    isFavorite: false,
     description: "A vibrant mix of exotic fruits topped with coconut flakes and a drizzle of passion fruit syrup.",
     ingredients: "mango, pineapple, dragon fruit, kiwi, coconut flakes, passion fruit syrup, mint leaves",
     imgSrc: null
@@ -49,7 +51,7 @@ export const fruitDishes: FruitDish[] = [
     category: "fresh",
     qty: 1,
     isHot: false,
-    isFavorite: true,
+    isFavorite: false,
     description: "Assorted citrus segments arranged beautifully with edible flowers and a touch of agave nectar drizzle.",
     ingredients: "oranges, grapefruit, blood oranges, pomelo, kumquats, agave nectar, edible flowers, mint",
     imgSrc: null
@@ -92,7 +94,7 @@ export const fruitDishes: FruitDish[] = [
     category: "cooked",
     qty: 1,
     isHot: true,
-    isFavorite: true,
+    isFavorite: false,
     description: "Warm cinnamon-spiced apples cooked to perfection, served with vanilla bean ice cream and caramel sauce.",
     ingredients: "apples, brown sugar, cinnamon, butter, vanilla extract, nutmeg, lemon juice, vanilla ice cream",
     imgSrc: null
@@ -120,7 +122,7 @@ export const fruitDishes: FruitDish[] = [
     category: "cooked",
     qty: 1,
     isHot: true,
-    isFavorite: true,
+    isFavorite: false,
     description: "Tender pears baked with maple syrup and pecans, topped with mascarpone cream and a drizzle of honey.",
     ingredients: "pears, maple syrup, pecans, mascarpone, honey, cinnamon, vanilla extract, butter",
     imgSrc: null
@@ -150,7 +152,7 @@ export const fruitDishes: FruitDish[] = [
     category: "drinks",
     qty: 1,
     isHot: false,
-    isFavorite: true,
+    isFavorite: false,
     description: "Creamy blend of mango and passion fruit with yogurt, finished with chia seeds and a fresh fruit garnish.",
     ingredients: "mango, passion fruit, Greek yogurt, coconut milk, chia seeds, honey, ice",
     imgSrc: null
@@ -178,7 +180,7 @@ export const fruitDishes: FruitDish[] = [
     category: "drinks",
     qty: 1,
     isHot: false,
-    isFavorite: true,
+    isFavorite: false,
     description: "Nutrient-packed smoothie with spinach, pineapple, and banana, sweetened naturally with dates and ginger.",
     ingredients: "spinach, pineapple, banana, dates, ginger, coconut water, lime juice",
     imgSrc: null
@@ -220,7 +222,7 @@ export const fruitDishes: FruitDish[] = [
     category: "drinks",
     qty: 1,
     isHot: false,
-    isFavorite: true,
+    isFavorite: false,
     description: "Sparkling beverage with muddled peaches, fresh ginger, and a hint of rosemary over ice with lemon twist.",
     ingredients: "peaches, fresh ginger, rosemary, lemon juice, sparkling water, honey, ice",
     imgSrc: null
@@ -236,7 +238,7 @@ export const fruitDishes: FruitDish[] = [
     category: "savory",
     qty: 1,
     isHot: false,
-    isFavorite: true,
+    isFavorite: false,
     description: "Sweet cantaloupe wedges wrapped in salty prosciutto, drizzled with balsamic glaze and fresh basil leaves.",
     ingredients: "cantaloupe, prosciutto, balsamic glaze, basil, olive oil, black pepper, sea salt",
     imgSrc: null
@@ -264,7 +266,7 @@ export const fruitDishes: FruitDish[] = [
     category: "savory",
     qty: 1,
     isHot: true,
-    isFavorite: true,
+    isFavorite: false,
     description: "Flaky pastry cups filled with brie cheese and caramelized apples, finished with thyme and a drizzle of honey.",
     ingredients: "apples, brie cheese, puff pastry, honey, thyme, butter, brown sugar, pecans",
     imgSrc: null
@@ -292,7 +294,7 @@ export const fruitDishes: FruitDish[] = [
     category: "savory",
     qty: 1,
     isHot: true,
-    isFavorite: true,
+    isFavorite: false,
     description: "Charred peach slices layered with fresh mozzarella and basil, finished with olive oil and aged balsamic.",
     ingredients: "peaches, mozzarella, basil, balsamic vinegar, olive oil, sea salt, black pepper, arugula",
     imgSrc: null
