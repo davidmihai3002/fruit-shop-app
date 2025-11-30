@@ -1,3 +1,4 @@
+import { useProducts } from '@/lib/hooks/useProducts';
 import { useRouter } from 'expo-router';
 import { Heart, Plus } from 'lucide-react-native';
 import { useState } from 'react';
@@ -7,6 +8,7 @@ const ProductCard = ({dishId, isFavorite , imgSrc , title , price , bgColor}: {d
 
     const [isFavorited, setIsFavorited] = useState<boolean>(isFavorite);
     const router = useRouter();
+    const {products , setCartItems} = useProducts();
 
   return (
     <TouchableOpacity activeOpacity={1} style={{
@@ -64,6 +66,14 @@ const ProductCard = ({dishId, isFavorite , imgSrc , title , price , bgColor}: {d
                     backgroundColor: "#FFF2E7",
                     alignItems: "center",
                     justifyContent: "center"
+                }} onPress={()=>{
+                    const productToCart = products?.find(product => product.id === dishId) ?? null;
+                    if (productToCart) {
+                        setCartItems(prev => ([
+                        ...prev,
+                        productToCart
+                    ]))
+                    }
                 }}><Plus size={20} color={"#FFA451"}/></TouchableOpacity>
             </View>
         </View>

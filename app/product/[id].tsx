@@ -1,18 +1,14 @@
+import { ProductDescription } from '@/components/products/ProductDescription';
+import { ProductPageActionButtons } from '@/components/products/ProductPageActionButtons';
+import { QtyModifier } from '@/components/products/QtyModifier';
 import GoBackButton from '@/components/shared/GoBackButton';
-import MainButton from '@/components/shared/MainButton';
+import { Separator } from '@/components/shared/Separator';
 import { FruitDish } from '@/hard-coded/hardCodedValues';
 import { useProducts } from '@/lib/hooks/useProducts';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Heart, Minus, Plus } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import dish3 from "../../assets/images/dish3.png";
-
-// TODO: Fix styling
-
-// TODO: add functionality
-
-// TODO: move each component to separate file
 
 const ProductPage = () => {
   const {id} = useLocalSearchParams();
@@ -58,7 +54,7 @@ const ProductPage = () => {
         borderTopLeftRadius: 25,
         paddingHorizontal: 24,
         paddingTop: 40,
-        paddingBottom: 16,
+        paddingBottom: 76,
         gap: 20
       }}>
         <Text style={{
@@ -78,106 +74,5 @@ const ProductPage = () => {
     </View>
   )
 }
-
-export const QtyModifier = ({price, initialQty}: {price: number , initialQty: number}) => {
-  const [quantity, setQuantity] = useState<number>(initialQty)
-  return <View style={{
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  }}>
-    <View style={{
-    width: 200,
-    flexDirection: "row",
-    justifyContent: "space-between"
-  }}> 
-
-    <Minus onPress={()=>setQuantity(prev => prev -= 1)}/>
-    <Text>{quantity}</Text>
-    <Plus onPress={()=>setQuantity(prev => prev += 1)}/>
-
-    </View>
-
-    <Text style={{
-      fontSize: 24,
-      fontWeight: 500
-    }}>${price * quantity}</Text>
-
-  </View>
-}
-
-export const Separator = () => {
-  return <View style={{
-    width: "100%",
-    backgroundColor: "#FFA451",
-    height: 1
-  }}></View>
-}
-
-export const ProductDescription = ({ingredients, description}: {ingredients: string, description: string}) => {
-  return <View style={{
-    width: "100%",
-          gap: 20
-
-    
-  }}>
-
-    <View style={{
-      gap: 5
-    }}>
-      <Text style={{
-        fontSize: 20,
-        fontWeight: 600
-      }}>This Dish Contains:</Text>
-      <Text style={{
-        fontSize: 18,
-        fontWeight: 300
-      }}>{ingredients}</Text>
-
-    </View>
-
-    <Separator/>
-
-    <View style={{
-      gap: 5
-    }}>
-      <Text style={{
-        fontSize: 20,
-        fontWeight: 600
-      }}>Description:</Text>
-      <Text style={{
-        fontSize: 18,
-        fontWeight: 300
-      }}>{description}</Text>
-    </View>
-
-  </View>
-}
-
-export const ProductPageActionButtons = () => {
-
-  const [isClicked, setIsClicked] = useState<boolean>(false);
-
-  return <TouchableOpacity activeOpacity={1} style={{
-    flexDirection: "row",
-    width: "100%",
-     justifyContent: "space-between"
-  }} onPress={() => setIsClicked(prev => !prev)}>
-    <View style={{
-      padding: 15,
-      borderRadius: 50,
-      backgroundColor: "#FFF7F0"
-    }}>
-      <Heart color={"#FFA451"} fill={isClicked ? "#FFA451" : "transparent"}/>
-    </View>
-    <View style={{
-      width: 200
-    }}>
-      <MainButton text="Add to basket"/>
-    </View>
-  </TouchableOpacity>
-}
-
 
 export default ProductPage
