@@ -1,14 +1,15 @@
+import { useRouter } from 'expo-router';
 import { Heart, Plus } from 'lucide-react-native';
 import { useState } from 'react';
-import { Image, ImageSourcePropType, Text, View } from "react-native";
+import { Image, ImageSourcePropType, Text, TouchableOpacity, View } from "react-native";
 
-
-const ProductCard = ({isFavorite , imgSrc , title , price , bgColor}: {isFavorite: boolean, imgSrc: ImageSourcePropType , title : string , price: number , bgColor?: string}) => {
+const ProductCard = ({dishId, isFavorite , imgSrc , title , price , bgColor}: {dishId: number, isFavorite: boolean, imgSrc: ImageSourcePropType , title : string , price: number , bgColor?: string}) => {
 
     const [isFavorited, setIsFavorited] = useState<boolean>(isFavorite);
+    const router = useRouter();
 
   return (
-    <View style={{
+    <TouchableOpacity activeOpacity={1} style={{
         width: 152,
         height: 183,
         borderRadius: 18,
@@ -18,13 +19,18 @@ const ProductCard = ({isFavorite , imgSrc , title , price , bgColor}: {isFavorit
         paddingVertical: 20,
         paddingHorizontal: 16,
         marginRight: 24
+    }} onPress={() => {
+            router.push({
+                pathname: '/product/[id]',
+                params: { id: dishId },
+            });
     }}>
         <Heart style={{
             position: "absolute",
             right: 7,
             top: 7,
             
-        }} fill={isFavorite ? "#FFA451" : "transparent"} color={"#FFA451"} onPress={()=>setIsFavorited(prev => !prev)}/>
+        }} fill={isFavorited ? "#FFA451" : "transparent"} color={"#FFA451"} onPress={()=>setIsFavorited(prev => !prev)}/>
 
         <View style={{
             alignItems: "center",
@@ -51,18 +57,18 @@ const ProductCard = ({isFavorite , imgSrc , title , price , bgColor}: {isFavorit
                     color: "#FFA451",
                     fontSize: 18
                 }}>${price}</Text>
-                <View style={{
+                <TouchableOpacity activeOpacity={1} style={{
                     width: 24,
                     height: 24,
                     borderRadius: 100,
                     backgroundColor: "#FFF2E7",
                     alignItems: "center",
                     justifyContent: "center"
-                }}><Plus size={20} color={"#FFA451"}/></View>
+                }}><Plus size={20} color={"#FFA451"}/></TouchableOpacity>
             </View>
         </View>
         
-    </View>
+    </TouchableOpacity>
   )
 }
 

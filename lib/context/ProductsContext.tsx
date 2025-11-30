@@ -4,6 +4,8 @@ export interface ProductsContextProps {
     products: FruitDish[] | null
 }
 
+// TODO: Add cart functionality
+
 export const ProductsContext = createContext<ProductsContextProps | null>(null);
 
 export const ProductsContextProvider = ({children}: {children: React.ReactNode}) => {

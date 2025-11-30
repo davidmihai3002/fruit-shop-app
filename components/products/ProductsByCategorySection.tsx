@@ -37,7 +37,7 @@ const ProductsByCategorySection = () => {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{
             paddingVertical: 10
         }}>
-            {productsToDisplay?.map(product => <ProductCard key={product.id} isFavorite={product.isFavorite} imgSrc={dish2} title={product.dishName} price={product.dishPrice}/>)}
+            {productsToDisplay?.map(product => <ProductCard key={product.id} dishId={product.id} isFavorite={product.isFavorite} imgSrc={dish2} title={product.dishName} price={product.dishPrice}/>)}
         </ScrollView>
     </View>
   )
