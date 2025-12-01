@@ -3,7 +3,6 @@ import MainButton from "@/components/shared/MainButton";
 import MainInput from "@/components/shared/MainInput";
 import { useProducts } from "@/lib/hooks/useProducts";
 import { checkoutPageStyles } from "@/lib/styles/pages/CheckoutPageStyles";
-import { OrderProps } from "@/lib/types/models";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Text, View } from "react-native";
@@ -17,7 +16,7 @@ const CheckoutPage = () => {
 
   return (
     <View style={checkoutPageStyles.container}>
-      <CartHeader title="Checkout"/>
+      <CartHeader title="Checkout" />
 
       <View style={checkoutPageStyles.contentWrapper}>
         <View style={checkoutPageStyles.formSection}>
