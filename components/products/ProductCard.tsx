@@ -8,7 +8,7 @@ const ProductCard = ({dishId, isFavorite , imgSrc , title , price , bgColor}: {d
 
     const [isFavorited, setIsFavorited] = useState<boolean>(isFavorite);
     const router = useRouter();
-    const {products , setCartItems} = useProducts();
+    const {addToCart} = useProducts();
 
   return (
     <TouchableOpacity activeOpacity={1} style={{
@@ -66,15 +66,7 @@ const ProductCard = ({dishId, isFavorite , imgSrc , title , price , bgColor}: {d
                     backgroundColor: "#FFF2E7",
                     alignItems: "center",
                     justifyContent: "center"
-                }} onPress={()=>{
-                    const productToCart = products?.find(product => product.id === dishId) ?? null;
-                    if (productToCart) {
-                        setCartItems(prev => ([
-                        ...prev,
-                        productToCart
-                    ]))
-                    }
-                }}><Plus size={20} color={"#FFA451"}/></TouchableOpacity>
+                }} onPress={()=>addToCart(dishId)}><Plus size={20} color={"#FFA451"}/></TouchableOpacity>
             </View>
         </View>
         

@@ -8,7 +8,7 @@ const CartItemList = () => {
   return (
     <ScrollView>
         {
-            cartItems.map(product => <IndividualCartItem key={product.id} name={product.dishName} quantity={product.qty} price = {product.dishPrice}/>)
+            cartItems.map(product => <IndividualCartItem key={product.id} bgColor={product.bgColor} name={product.dishName} quantity={product.qty} price = {product.dishPrice}/>)
         }
     </ScrollView>
   )

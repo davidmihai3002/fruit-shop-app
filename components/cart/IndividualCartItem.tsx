@@ -1,13 +1,10 @@
 import { Image, Text, View } from "react-native"
 import dish3 from "../../assets/images/dish3.png"
 
-// TODO: Add multiple items to cart functionality
-// TODO: Create add to cart function inside products context to use in all necessary components
-// TODO: Add "to favorite function and actually change favorite status"
+// TODO: Add to favorite function and actually change favorite status
 // TODO: Add notifications context and update it when you add to cart or update favorite status
-// TODO: Add cart checkout button along with total order price
 
-export const IndividualCartItem = ({name, quantity , price}: {name: string, quantity: number , price: number}) => {
+export const IndividualCartItem = ({name, quantity , price , bgColor}: {name: string, quantity: number , price: number , bgColor?: string}) => {
     return <View style={{
         paddingHorizontal: 24,
         width: "100%",
@@ -27,7 +24,7 @@ export const IndividualCartItem = ({name, quantity , price}: {name: string, quan
                 width: 64,
                 height: 64,
                 borderRadius: 12,
-                backgroundColor: "white",
+                backgroundColor: bgColor ? bgColor : "white",
                 alignItems: "center",
                 justifyContent: "center",
                 elevation: 2
@@ -43,7 +40,7 @@ export const IndividualCartItem = ({name, quantity , price}: {name: string, quan
             fontWeight: 500
             // color: "#FFA451"
         }}>{name}</Text>
-                <Text>{quantity + " packs"}</Text>
+                <Text>{quantity + (quantity === 1 ? " pack" : " packs")}</Text>
 
             </View>
 

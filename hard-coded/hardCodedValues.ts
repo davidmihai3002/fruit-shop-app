@@ -11,7 +11,7 @@ export interface FruitDish {
   description: string;
   ingredients: string;
   imgSrc: ImageSourcePropType | null;
-//   tocart
+  bgColor?: string;
 }
 
 export const categories = ["Fresh" , "Cooked" , "Drinks" , "Savory"]
@@ -28,8 +28,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "A vibrant mix of exotic fruits topped with coconut flakes and a drizzle of passion fruit syrup.",
     ingredients: "mango, pineapple, dragon fruit, kiwi, coconut flakes, passion fruit syrup, mint leaves",
-    imgSrc: null
-
+    imgSrc: null,
+    bgColor: "#FFFAEB"
   },
   {
     id: 823,
@@ -41,8 +41,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Fresh seasonal berries tossed with honey-lime dressing and topped with crushed pistachios for crunch.",
     ingredients: "strawberries, blueberries, raspberries, blackberries, honey, lime juice, pistachios, basil",
-    imgSrc: null
-
+    imgSrc: null,
+    bgColor: "#FEF0F0"
   },
   {
     id: 156,
@@ -54,8 +54,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Assorted citrus segments arranged beautifully with edible flowers and a touch of agave nectar drizzle.",
     ingredients: "oranges, grapefruit, blood oranges, pomelo, kumquats, agave nectar, edible flowers, mint",
-    imgSrc: null
-
+    imgSrc: null,
+    bgColor: "#F1EFF6"
   },
   {
     id: 94,
@@ -67,9 +67,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Three varieties of melon cubed and mixed with fresh lime juice, finished with a sprinkle of sea salt.",
     ingredients: "watermelon, cantaloupe, honeydew, lime juice, sea salt, mint leaves",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FFFAEB"
   },
   {
     id: 672,
@@ -81,9 +80,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Sliced peaches, nectarines, and plums drizzled with lavender honey and topped with toasted almonds.",
     ingredients: "peaches, nectarines, plums, apricots, lavender honey, toasted almonds, lemon zest",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FEF0F0"
   },
 
   // Cooked Category
@@ -97,9 +95,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Warm cinnamon-spiced apples cooked to perfection, served with vanilla bean ice cream and caramel sauce.",
     ingredients: "apples, brown sugar, cinnamon, butter, vanilla extract, nutmeg, lemon juice, vanilla ice cream",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#F1EFF6"
   },
   {
     id: 591,
@@ -111,9 +108,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Charred pineapple chunks glazed with honey-rum sauce and garnished with toasted coconut and lime zest.",
     ingredients: "pineapple, honey, rum, coconut flakes, lime zest, brown sugar, cinnamon",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FFFAEB"
   },
   {
     id: 245,
@@ -125,9 +121,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Tender pears baked with maple syrup and pecans, topped with mascarpone cream and a drizzle of honey.",
     ingredients: "pears, maple syrup, pecans, mascarpone, honey, cinnamon, vanilla extract, butter",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FEF0F0"
   },
   {
     id: 789,
@@ -139,9 +134,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Dark cherries flambéed with brandy and served over pound cake with whipped cream and almond slivers.",
     ingredients: "dark cherries, brandy, sugar, pound cake, whipped cream, almond slivers, lemon juice, cornstarch",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#F1EFF6"
   },
 
   // Drinks Category
@@ -155,9 +149,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Creamy blend of mango and passion fruit with yogurt, finished with chia seeds and a fresh fruit garnish.",
     ingredients: "mango, passion fruit, Greek yogurt, coconut milk, chia seeds, honey, ice",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FFFAEB"
   },
   {
     id: 67,
@@ -169,9 +162,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Mixed berries blended with mint, lime juice, and sparkling water for a refreshing and tangy beverage.",
     ingredients: "strawberries, blueberries, raspberries, mint, lime juice, sparkling water, agave syrup, ice",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FEF0F0"
   },
   {
     id: 934,
@@ -183,9 +175,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Nutrient-packed smoothie with spinach, pineapple, and banana, sweetened naturally with dates and ginger.",
     ingredients: "spinach, pineapple, banana, dates, ginger, coconut water, lime juice",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#F1EFF6"
   },
   {
     id: 28,
@@ -197,9 +188,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Fresh watermelon juice blended with mint leaves and lime, served over crushed ice with a salted rim option.",
     ingredients: "watermelon, mint leaves, lime juice, agave syrup, sea salt, ice",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FFFAEB"
   },
   {
     id: 405,
@@ -211,9 +201,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Warm apple cider infused with cinnamon sticks, cloves, and orange slices, perfect for cozy afternoons.",
     ingredients: "apple cider, cinnamon sticks, cloves, orange slices, nutmeg, star anise, brown sugar",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FEF0F0"
   },
   {
     id: 761,
@@ -225,9 +214,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Sparkling beverage with muddled peaches, fresh ginger, and a hint of rosemary over ice with lemon twist.",
     ingredients: "peaches, fresh ginger, rosemary, lemon juice, sparkling water, honey, ice",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#F1EFF6"
   },
 
   // Savory Category
@@ -241,9 +229,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Sweet cantaloupe wedges wrapped in salty prosciutto, drizzled with balsamic glaze and fresh basil leaves.",
     ingredients: "cantaloupe, prosciutto, balsamic glaze, basil, olive oil, black pepper, sea salt",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FFFAEB"
   },
   {
     id: 88,
@@ -255,9 +242,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Toasted baguette slices topped with creamy goat cheese, fresh figs, honey drizzle, and crushed walnuts.",
     ingredients: "figs, goat cheese, baguette, honey, walnuts, thyme, balsamic reduction, arugula",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FEF0F0"
   },
   {
     id: 546,
@@ -269,9 +255,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Flaky pastry cups filled with brie cheese and caramelized apples, finished with thyme and a drizzle of honey.",
     ingredients: "apples, brie cheese, puff pastry, honey, thyme, butter, brown sugar, pecans",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#F1EFF6"
   },
   {
     id: 203,
@@ -283,9 +268,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Mixed greens with sliced pears, crumbled gorgonzola, candied walnuts, and a maple vinaigrette dressing.",
     ingredients: "pears, gorgonzola cheese, mixed greens, candied walnuts, maple syrup, balsamic vinegar, olive oil, Dijon mustard",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FFFAEB"
   },
   {
     id: 657,
@@ -297,9 +281,8 @@ export const fruitDishes: FruitDish[] = [
     isFavorite: false,
     description: "Charred peach slices layered with fresh mozzarella and basil, finished with olive oil and aged balsamic.",
     ingredients: "peaches, mozzarella, basil, balsamic vinegar, olive oil, sea salt, black pepper, arugula",
-    imgSrc: null
-
-
+    imgSrc: null,
+    bgColor: "#FEF0F0"
   }
 ];
 

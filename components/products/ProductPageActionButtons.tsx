@@ -1,11 +1,13 @@
+import { useProducts } from "@/lib/hooks/useProducts";
 import { Heart } from "lucide-react-native";
 import { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import MainButton from "../shared/MainButton";
 
-export const ProductPageActionButtons = () => {
+export const ProductPageActionButtons = ({productId}: {productId: number}) => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
+  const {addToCart} = useProducts()
 
   return <TouchableOpacity activeOpacity={1} style={{
     flexDirection: "row",
@@ -23,7 +25,7 @@ export const ProductPageActionButtons = () => {
     <View style={{
       width: 200
     }}>
-      <MainButton text="Add to basket"/>
+      <MainButton text="Add to basket" method={()=> addToCart(productId)}/>
     </View>
   </TouchableOpacity>
 }

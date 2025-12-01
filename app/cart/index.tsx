@@ -1,13 +1,19 @@
 import CartItemList from '@/components/cart/CartItemList';
+import CartTotalAndButton from '@/components/cart/CartTotalAndButton';
 import GoBackButton from '@/components/shared/GoBackButton';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Text, View } from 'react-native';
 
+// TODO: Add view for empty cart
+
 const CartPage = () => {
     const router = useRouter();
   return (
-    <View>
+    <View style={{
+        height: "100%",
+        // paddingBottom: 70
+    }}>
         <View style={{
             flexDirection: "row",
             paddingHorizontal: 24,
@@ -36,6 +42,7 @@ const CartPage = () => {
         }}>My Basket</Text>
     </View>
     <CartItemList/>
+    <CartTotalAndButton/>
     </View>
   )
 }

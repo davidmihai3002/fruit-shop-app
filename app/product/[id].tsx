@@ -10,6 +10,8 @@ import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 import dish3 from "../../assets/images/dish3.png";
 
+// TODO: Make it so that the QtyModifier changes the actual qty, and gets passed to the cart page when you add an item to the cart
+
 const ProductPage = () => {
   const {id} = useLocalSearchParams();
   const [product, setProduct] = useState<FruitDish | null>(null);
@@ -68,7 +70,7 @@ const ProductPage = () => {
 
         <ProductDescription ingredients={product?.ingredients ?? "No ingredients provided"} description={product?.description ?? "No description provided"}/>
 
-        <ProductPageActionButtons/>
+        <ProductPageActionButtons productId={Number(id)}/>
 
       </View>
     </View>

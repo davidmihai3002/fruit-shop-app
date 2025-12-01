@@ -1,7 +1,6 @@
 import { Search } from "lucide-react-native"
 import { TextInput, View } from "react-native"
 
-// TODO: Add functionality
 const SearchDishes = () => {
   return (
     <View style={{

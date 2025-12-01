@@ -1,10 +1,9 @@
 import MainButton from "@/components/shared/MainButton";
 import { useRouter } from "expo-router";
-import { useState } from "react";
 import { Text, View } from "react-native";
 
 export default function Index() {
-  const [isRed , setIsRed] = useState(false);
+  // TODO: add authGuard that checks if the user is authenticated, if now we redirect him to the dashboard
   const router = useRouter();
   return (
     <View
@@ -14,11 +13,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text style={{
-        color: isRed ? "red" : "black",
-      }}>Edit app/index.ts.</Text>
-      {/* <MainButton text="Click me" method={()=>setIsRed(prev => !prev)}/> */}
-
+      <Text>Edit app/index.ts.</Text>
       <MainButton text="Go to welcome page" method={()=>router.push("/welcome")}/>
 
     </View>

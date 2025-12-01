@@ -1,5 +1,8 @@
 import { StyleSheet } from "react-native";
 
+// TODO: MAJOR Add custom styles for each component
+// TODO: MAJOR Modularize all functions with useCallback
+
 export const mainButtonStyles = StyleSheet.create({
     button: {
         backgroundColor: "#FFA451",
