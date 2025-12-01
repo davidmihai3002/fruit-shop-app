@@ -1,15 +1,11 @@
 import { useProducts } from '@/lib/hooks/useProducts';
 import { useRouter } from 'expo-router';
 import { Heart, Plus } from 'lucide-react-native';
-import { useState } from 'react';
 import { Image, ImageSourcePropType, Text, TouchableOpacity, View } from "react-native";
 
-const ProductCard = ({dishId, isFavorite , imgSrc , title , price , bgColor}: {dishId: number, isFavorite: boolean, imgSrc: ImageSourcePropType , title : string , price: number , bgColor?: string}) => {
-
-    const [isFavorited, setIsFavorited] = useState<boolean>(isFavorite);
+const ProductCard = ({dishId, isFavorite , imgSrc , title , price , bgColor , hideFavoriteIcon = false}: {dishId: number, isFavorite: boolean, imgSrc: ImageSourcePropType , title : string , price: number , bgColor?: string , hideFavoriteIcon?: boolean}) => {
     const router = useRouter();
-    const {addToCart} = useProducts();
-
+    const {addToCart , addToFavorite} = useProducts();
   return (
     <TouchableOpacity activeOpacity={1} style={{
         width: 152,
@@ -27,12 +23,12 @@ const ProductCard = ({dishId, isFavorite , imgSrc , title , price , bgColor}: {d
                 params: { id: dishId },
             });
     }}>
-        <Heart style={{
+        {!hideFavoriteIcon && <Heart style={{
             position: "absolute",
             right: 7,
             top: 7,
             
-        }} fill={isFavorited ? "#FFA451" : "transparent"} color={"#FFA451"} onPress={()=>setIsFavorited(prev => !prev)}/>
+        }} fill={isFavorite ? "#FFA451" : "transparent"} color={"#FFA451"} onPress={()=>addToFavorite(dishId)}/>}
 
         <View style={{
             alignItems: "center",

@@ -14,7 +14,9 @@ export default function Index() {
       }}
     >
       <Text>Edit app/index.ts.</Text>
-      <MainButton text="Go to welcome page" method={()=>router.push("/welcome")}/>
+      <MainButton text="Go to welcome page" method={()=>{
+        router.push("/welcome");
+      }}/>
 
     </View>
   );

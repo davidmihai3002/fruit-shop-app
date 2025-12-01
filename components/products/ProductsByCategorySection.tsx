@@ -6,9 +6,9 @@ import dish2 from "../../assets/images/dish2.png";
 import ProductCard from './ProductCard';
 
 const ProductsByCategorySection = () => {
-    const [selectedCategory, setSelectedCategory] = useState<string>("fresh");
-    const [productsToDisplay, setProductsToDisplay] = useState<FruitDish[] | null>(null);
     const {products} = useProducts();
+    const [selectedCategory, setSelectedCategory] = useState<string>("fresh");
+    const [productsToDisplay, setProductsToDisplay] = useState<FruitDish[]>(products!.filter(dish => dish.category === selectedCategory));
 
     useEffect(()=>{
         setProductsToDisplay(products!.filter(dish => dish.category === selectedCategory))
@@ -37,7 +37,7 @@ const ProductsByCategorySection = () => {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{
             paddingVertical: 10
         }}>
-            {productsToDisplay?.map(product => <ProductCard key={product.id} bgColor={product.bgColor} dishId={product.id} isFavorite={product.isFavorite} imgSrc={dish2} title={product.dishName} price={product.dishPrice}/>)}
+            {productsToDisplay?.map(product => <ProductCard key={product.id} hideFavoriteIcon={true} bgColor={product.bgColor} dishId={product.id} isFavorite={product.isFavorite} imgSrc={dish2} title={product.dishName} price={product.dishPrice}/>)}
         </ScrollView>
     </View>
   )

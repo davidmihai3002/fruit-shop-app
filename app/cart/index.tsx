@@ -1,48 +1,22 @@
+import CartHeader from '@/components/cart/CartHeader';
 import CartItemList from '@/components/cart/CartItemList';
 import CartTotalAndButton from '@/components/cart/CartTotalAndButton';
-import GoBackButton from '@/components/shared/GoBackButton';
-import { useRouter } from 'expo-router';
+import NoCartItems from '@/components/cart/NoCartItems';
+import { useProducts } from '@/lib/hooks/useProducts';
 import React from 'react';
-import { Text, View } from 'react-native';
-
-// TODO: Add view for empty cart
+import { View } from 'react-native';
 
 const CartPage = () => {
-    const router = useRouter();
+
+    const {cartItems} = useProducts();
   return (
     <View style={{
         height: "100%",
-        // paddingBottom: 70
     }}>
-        <View style={{
-            flexDirection: "row",
-            paddingHorizontal: 24,
-            justifyContent: "center",
-            position: "relative",
-            paddingTop: 70,
-            height: 135,
-            backgroundColor: "#FFA451"
-        }}>
-            <GoBackButton method={()=>router.push("/dashboard")} style={{
-                top: 70,
-                left: 24,
-            position: "absolute",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 5,
-            paddingRight: 8,
-            paddingVertical: 6,
-            backgroundColor: "white",
-            borderRadius: 20 
-        }}/>
-
-        <Text style={{
-            color: "white",
-            fontSize: 24
-        }}>My Basket</Text>
-    </View>
-    <CartItemList/>
-    <CartTotalAndButton/>
+    <CartHeader title='My Basket'/>
+    {cartItems.length > 0 && <CartItemList/>}
+    {cartItems.length > 0 && <CartTotalAndButton/>}
+    {cartItems.length === 0 && <NoCartItems/>}
     </View>
   )
 }

@@ -1,11 +1,15 @@
 import fruitDishes, { FruitDish } from "@/hard-coded/hardCodedValues";
+import { useRouter } from "expo-router";
 import { createContext, useCallback, useEffect, useState } from "react";
+import { useNotifications } from "../hooks/useNotifications";
 export interface ProductsContextProps {
   products: FruitDish[] | null;
   cartItems: FruitDish[];
   setCartItems: React.Dispatch<React.SetStateAction<FruitDish[]>>;
-  addToCart: (productId: number)=> void;
-  cartTotal: () => number
+  addToCart: (productId: number, productQty?: number) => void;
+  cartTotal: () => number;
+  orderNow: () => void;
+  addToFavorite: (productId: number) => void;
 }
 
 export const ProductsContext = createContext<ProductsContextProps | null>(null);
@@ -15,39 +19,79 @@ export const ProductsContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [products, setProducts] = useState<FruitDish[] | null>(null);
+  const [products, setProducts] = useState<FruitDish[]>([]);
   const [cartItems, setCartItems] = useState<FruitDish[]>([]);
 
-const addToCart = useCallback((productId: number) => {
-  const productToCart = products?.find((product) => product.id === productId);
-  
-  if (productToCart) {
-    setCartItems((prev) => {
-      const existingItem = prev.find(item => item.id === productToCart.id);
-      
-      if (existingItem) {
-        return prev.map(item =>
-          item.id === productToCart.id
-            ? { ...item, qty: item.qty + 1 }
-            : item
-        );
-      } else {
-        return [...prev, { ...productToCart, qty: 1 }];
-      }
-    });
-  }
-}, [products]);
+  const { notification } = useNotifications();
 
-const cartTotal = useCallback(()=>{
+  const router = useRouter();
+
+  const addToCart = useCallback(
+    (productId: number, productQty: number = 1) => {
+      const productToCart = products?.find(
+        (product) => product.id === productId
+      );
+
+      if (productToCart) {
+        setCartItems((prev) => {
+          const existingItem = prev.find(
+            (item) => item.id === productToCart.id
+          );
+
+          if (existingItem) {
+            return prev.map((item) =>
+              item.id === productToCart.id
+                ? { ...item, qty: item.qty + productQty }
+                : item
+            );
+          } else {
+            return [...prev, { ...productToCart, qty: productQty }];
+          }
+        });
+      }
+      notification("Your item was added to cart");
+    },
+    [products]
+  );
+
+  const addToFavorite = useCallback(
+    (productId: number) => {
+      const productToFavorite = products?.find(
+        (product) => product.id === productId
+      );
+
+      if (productToFavorite) {
+        setProducts((prev) => {
+          return prev?.map((product) =>
+            product.id === productToFavorite.id
+              ? { ...product, isFavorite: product.isFavorite ? false : true }
+              : product
+          );
+        });
+      }
+      notification(
+        !productToFavorite?.isFavorite
+          ? "You have a new favorite!"
+          : "Choose another favorite!"
+      );
+    },
+    [products, setProducts]
+  );
+
+  const cartTotal = useCallback(() => {
     let sum = 0;
 
-    cartItems.forEach(product => {
-        sum += product.qty * product.dishPrice
+    cartItems.forEach((product) => {
+      sum += product.qty * product.dishPrice;
     });
 
-    return Number(sum.toFixed(2))
+    return Number(sum.toFixed(2));
+  }, [cartItems]);
 
-}, [cartItems])
+  const orderNow = useCallback(() => {
+    setCartItems([]);
+    router.push("/dashboard");
+  }, []);
 
   useEffect(() => {
     setProducts(fruitDishes);
@@ -58,7 +102,9 @@ const cartTotal = useCallback(()=>{
     cartItems,
     setCartItems,
     addToCart,
-    cartTotal
+    cartTotal,
+    orderNow,
+    addToFavorite,
   };
   return (
     <ProductsContext.Provider value={toExport}>

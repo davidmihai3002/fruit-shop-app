@@ -1,10 +1,11 @@
 import MainButton from '@/components/shared/MainButton'
+import MainInput from '@/components/shared/MainInput'
 import WelcomeIlustrationSection from '@/components/user/WelcomeIlustrationSection'
 import WelcomeTextComponent from '@/components/user/WelcomeTextComponent'
 import { useUser } from '@/lib/hooks/useUser'
 import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
-import { Keyboard, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native'
+import { Keyboard, Text, TouchableWithoutFeedback, View } from 'react-native'
 import fruits2 from "../../assets/images/fruits2.png"
 
 const WelcomeUserPage = () => {
@@ -41,15 +42,7 @@ const WelcomeUserPage = () => {
                         fontSize: 20,
                         fontWeight: 600
                     }}>What is your firstname?</Text>
-              <TextInput style={{
-                height: 56,
-                width: "100%",
-                borderRadius: 10,
-                paddingHorizontal: 24,
-                fontSize: 18,
-                backgroundColor: "#E5E5E5",
-                // elevation: 4
-              }} value={user} onChangeText={setUser} placeholder='Your name' onPress={()=> setIsUserWriting(true)}/>
+              <MainInput value={user} placeholder={"Your name"} onChange={setUser} onPress={()=> setIsUserWriting(true)}/>
             </View>
             {/* <Text>{user}</Text> */}
             <MainButton text='Start Ordering' method={()=> router.push("/dashboard")}/></View>

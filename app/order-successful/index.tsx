@@ -1,11 +1,11 @@
 import MainButton from '@/components/shared/MainButton'
-import { useRouter } from 'expo-router'
+import { useProducts } from '@/lib/hooks/useProducts'
 import React from 'react'
 import { Image, Text, View } from 'react-native'
 import successfulOrder from "../../assets/images/sucessful-order.png"
 
 const OrderSuccessfulPage = () => {
-    const router = useRouter();
+    const {orderNow} = useProducts()
   return (
     <View style={{
         height: "100%",
@@ -36,7 +36,7 @@ const OrderSuccessfulPage = () => {
 
         </View>
 
-        <MainButton text='Go to dashboard' method={()=> router.push("/dashboard")}/>
+        <MainButton text='Go to dashboard' method={orderNow}/>
         
     </View>
   )

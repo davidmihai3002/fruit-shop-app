@@ -1,31 +1,25 @@
 import { useProducts } from "@/lib/hooks/useProducts";
-import { Heart } from "lucide-react-native";
-import { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
+import AddToFavoriteButton from "../shared/AddToFavoriteButton";
 import MainButton from "../shared/MainButton";
 
-export const ProductPageActionButtons = ({productId}: {productId: number}) => {
+export const ProductPageActionButtons = ({productId, productQty , isFavorite}: {productId: number, productQty: number , isFavorite: boolean}) => {
 
-  const [isClicked, setIsClicked] = useState<boolean>(false);
-  const {addToCart} = useProducts()
+  const {addToCart , addToFavorite , products} = useProducts()
+  const product = products?.find(p => p.id === productId);
+
 
   return <TouchableOpacity activeOpacity={1} style={{
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
     // elevation: 9
-  }} onPress={() => setIsClicked(prev => !prev)}>
-    <View style={{
-      padding: 15,
-      borderRadius: 50,
-      backgroundColor: "#FFF7F0"
-    }}>
-      <Heart color={"#FFA451"} fill={isClicked ? "#FFA451" : "transparent"}/>
-    </View>
+  }} onPress={() => addToFavorite(productId)}>
+    <AddToFavoriteButton isFavorite={product?.isFavorite!} productId={product?.id!}/>
     <View style={{
       width: 200
     }}>
-      <MainButton text="Add to basket" method={()=> addToCart(productId)}/>
+      <MainButton text="Add to basket" method={()=> addToCart(productId, productQty)}/>
     </View>
   </TouchableOpacity>
 }
