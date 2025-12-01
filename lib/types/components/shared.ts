@@ -9,7 +9,7 @@ export interface MainButtonProps {
 export interface MainInputProps {
   value?: string;
   placeholder?: string;
-  onChange?: React.Dispatch<React.SetStateAction<string>>;
+  onChange?: React.Dispatch<React.SetStateAction<string | null>>;
   onPress?: () => void;
 }
 
@@ -21,4 +21,3 @@ export interface AddToFavoriteButtonProps {
   isFavorite: boolean;
   productId: number;
 }
-
