@@ -1,20 +1,30 @@
+import { useProducts } from '@/lib/hooks/useProducts';
 import { useUser } from '@/lib/hooks/useUser';
+import { dashboardHeaderStyles } from '@/lib/styles/user/DashboardHeaderStyles';
 import { useRouter } from 'expo-router';
 import { ShoppingBasket } from 'lucide-react-native';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 const DashboardHeader = () => {
     const {user} = useUser();
     const router = useRouter();
+    const {cartItems} = useProducts();
   return (
-      <View style={{ flexDirection: "row", width: "100%", alignItems: "center" }}>
-        <Text style={{ flex: 1, fontSize: 20 }}>
-          Hello {user}, <Text style={{ fontWeight: "600" }}>What fruit salad combo do you want today?</Text>
+      <View style={dashboardHeaderStyles.container}>
+        <Text style={dashboardHeaderStyles.greetingText}>
+          Hello {user}, <Text style={dashboardHeaderStyles.boldText}>What fruit salad combo do you want today?</Text>
         </Text>
-        <ShoppingBasket color="#FFA451" size={40} onPress={()=> router.push("/cart")}/>
+        <TouchableOpacity onPress={()=> router.push("/cart")} style={dashboardHeaderStyles.cartButton}>
+          <ShoppingBasket color="#FFA451" size={40} />
+          {
+            cartItems.length > 0 && (<View style={dashboardHeaderStyles.cartBadge}>
+              <Text style={dashboardHeaderStyles.cartBadgeText}>{cartItems.length}</Text>
+            </View>
+          )}
+        </TouchableOpacity>
       </View>
-  )
-}
+    );
+};
 
-export default DashboardHeader
+export default DashboardHeader;

@@ -1,17 +1,11 @@
+import { welcomeTextComponentStyles } from '@/lib/styles/user/WelcomeTextComponentStyles'
+import { WelcomeTextComponentProps } from '@/lib/types/components/user'
 import React from 'react'
 import { View } from 'react-native'
 
-const WelcomeTextComponent = ({children}: {children: React.ReactNode}) => {
+const WelcomeTextComponent = ({children}: WelcomeTextComponentProps) => {
   return (
-    <View style={{
-        width: "100%",
-        flex: 1,
-        gap: 30,
-        paddingHorizontal: 24,
-        paddingVertical: 48,
-        alignItems: "flex-start",
-        justifyContent: "flex-start"
-    }}>
+    <View style={welcomeTextComponentStyles.container}>
         {children}
     </View>
   )

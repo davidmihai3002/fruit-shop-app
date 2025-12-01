@@ -1,44 +1,18 @@
+import { cartHeaderStyles } from '@/lib/styles/cart/CartHeaderStyles';
+import { CartHeaderProps } from '@/lib/types/components/cart';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Text, View } from 'react-native';
 import GoBackButton from '../shared/GoBackButton';
 
-const CartHeader = ({title}: {title: string}) => {
+const CartHeader = ({title}: CartHeaderProps) => {
       const router = useRouter();
     
   return (
-    <View
-            style={{
-              flexDirection: "row",
-              paddingHorizontal: 24,
-              justifyContent: "center",
-              position: "relative",
-              paddingTop: 70,
-              height: 135,
-              backgroundColor: "#FFA451",
-            }}
-          >
-            <GoBackButton
-              style={{
-                top: 70,
-                left: 24,
-                position: "absolute",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 5,
-                paddingRight: 8,
-                paddingVertical: 6,
-                backgroundColor: "white",
-                borderRadius: 20,
-              }}
-            />
+    <View style={cartHeaderStyles.container}>
+            <GoBackButton style={cartHeaderStyles.goBackButton} />
     
-            <Text
-              style={{
-                color: "white",
-                fontSize: 24,
-              }}
-            >
+            <Text style={cartHeaderStyles.title}>
               {title}
             </Text>
           </View>

@@ -1,11 +1,6 @@
+import { NotificationsContextProps } from "@/lib/types/contexts";
 import React, { createContext, useState } from "react";
 import { Modal, Text, View } from "react-native";
-
-export interface NotificationsContextProps {
-  openNotification: (message: string) => void;
-  closeNotification: () => void;
-  notification: (message: string) => void;
-}
 
 export const NotificationsContext =
   createContext<NotificationsContextProps | null>(null);

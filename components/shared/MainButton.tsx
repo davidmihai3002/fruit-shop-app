@@ -1,11 +1,7 @@
 import { mainButtonStyles } from '@/lib/styles/button/MainButtonStyles'
+import { MainButtonProps } from '@/lib/types/components/shared'
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
-
-export interface MainButtonProps{
-    text: string,
-    method?: () => void,
-}
 
 const MainButton = ({text, method}: MainButtonProps) => {
   return (

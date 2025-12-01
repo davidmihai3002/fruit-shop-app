@@ -3,6 +3,7 @@ import RecommendedProductsSection from '@/components/products/RecommendedProduct
 import SearchDishes from '@/components/products/SearchDishes';
 import DashboardHeader from '@/components/user/DashboardHeader';
 import { useUser } from '@/lib/hooks/useUser';
+import { dashboardPageStyles } from '@/lib/styles/pages/DashboardPageStyles';
 import React from 'react';
 import { ScrollView } from 'react-native';
 
@@ -10,11 +11,7 @@ const AppDashboard = () => {
     const {user} = useUser();
   return (
     <ScrollView
-  contentContainerStyle={{
-    paddingHorizontal: 24,
-    paddingTop: 60,
-    gap: 20,
-  }}
+  contentContainerStyle={dashboardPageStyles.scrollViewContent}
 >
   <DashboardHeader/>
   <SearchDishes/>

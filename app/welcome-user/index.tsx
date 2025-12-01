@@ -3,6 +3,7 @@ import MainInput from '@/components/shared/MainInput'
 import WelcomeIlustrationSection from '@/components/user/WelcomeIlustrationSection'
 import WelcomeTextComponent from '@/components/user/WelcomeTextComponent'
 import { useUser } from '@/lib/hooks/useUser'
+import { welcomeUserPageStyles } from '@/lib/styles/pages/WelcomeUserPageStyles'
 import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { Keyboard, Text, TouchableWithoutFeedback, View } from 'react-native'
@@ -19,29 +20,19 @@ const WelcomeUserPage = () => {
       Keyboard.dismiss();
       setIsUserWriting(false)
     }}>
-        <View style={{
-        height: "100%",
-        width: "100%",
-        flexDirection: isUserWriting ? "column-reverse" : "column"
-        
-    }}>
+        <View style={[
+          welcomeUserPageStyles.container,
+          { flexDirection: isUserWriting ? "column-reverse" : "column" }
+        ]}>
         <WelcomeIlustrationSection imgUrl={fruits2}/>
         <WelcomeTextComponent>
           
-            <View style={{
-              width: "100%",
-              height: "100%",
-              gap: 20,
-              justifyContent: isUserWriting ? "center" : "flex-start"
-            }}>
-            <View style={{
-              width: "100%",
-              gap: 16
-            }}>
-              <Text style={{
-                        fontSize: 20,
-                        fontWeight: 600
-                    }}>What is your firstname?</Text>
+            <View style={[
+              welcomeUserPageStyles.contentContainer,
+              { justifyContent: isUserWriting ? "center" : "flex-start" }
+            ]}>
+            <View style={welcomeUserPageStyles.inputSection}>
+              <Text style={welcomeUserPageStyles.questionText}>What is your firstname?</Text>
               <MainInput value={user} placeholder={"Your name"} onChange={setUser} onPress={()=> setIsUserWriting(true)}/>
             </View>
             {/* <Text>{user}</Text> */}

@@ -3,6 +3,7 @@ import CartItemList from '@/components/cart/CartItemList';
 import CartTotalAndButton from '@/components/cart/CartTotalAndButton';
 import NoCartItems from '@/components/cart/NoCartItems';
 import { useProducts } from '@/lib/hooks/useProducts';
+import { cartPageStyles } from '@/lib/styles/pages/CartPageStyles';
 import React from 'react';
 import { View } from 'react-native';
 
@@ -10,9 +11,7 @@ const CartPage = () => {
 
     const {cartItems} = useProducts();
   return (
-    <View style={{
-        height: "100%",
-    }}>
+    <View style={cartPageStyles.container}>
     <CartHeader title='My Basket'/>
     {cartItems.length > 0 && <CartItemList/>}
     {cartItems.length > 0 && <CartTotalAndButton/>}

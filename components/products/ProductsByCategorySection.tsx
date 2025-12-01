@@ -1,5 +1,7 @@
-import { categories, FruitDish } from '@/hard-coded/hardCodedValues';
+import { categories } from '@/hard-coded/hardCodedValues';
 import { useProducts } from '@/lib/hooks/useProducts';
+import { productsByCategorySectionStyles } from '@/lib/styles/products/ProductsByCategorySectionStyles';
+import { FruitDish } from '@/lib/types/models';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import dish2 from "../../assets/images/dish2.png";
@@ -15,15 +17,8 @@ const ProductsByCategorySection = () => {
     }, [selectedCategory])
 
   return (
-    <View style={{
-        gap: 30
-        
-    }}>
-        <View style={{
-            flexDirection: "row",
-            gap: 20,
-            alignItems: "center"
-        }}>
+    <View style={productsByCategorySectionStyles.container}>
+        <View style={productsByCategorySectionStyles.categoriesContainer}>
             {
                 categories.map(category => <Text key={category} style={{
                     fontSize: selectedCategory === category.toLowerCase() ? 22 : 20,
@@ -34,9 +29,7 @@ const ProductsByCategorySection = () => {
             
 
         </View>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{
-            paddingVertical: 10
-        }}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={productsByCategorySectionStyles.scrollViewContent}>
             {productsToDisplay?.map(product => <ProductCard key={product.id} hideFavoriteIcon={true} bgColor={product.bgColor} dishId={product.id} isFavorite={product.isFavorite} imgSrc={dish2} title={product.dishName} price={product.dishPrice}/>)}
         </ScrollView>
     </View>

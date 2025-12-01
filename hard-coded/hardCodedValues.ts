@@ -1,18 +1,6 @@
-import { ImageSourcePropType } from "react-native";
+import { FruitDish } from "@/lib/types/models";
 
-export interface FruitDish {
-  id: number;
-  dishName: string;
-  dishPrice: number;
-  category: "fresh" | "cooked" | "drinks" | "savory";
-  qty: number;
-  isHot: boolean;
-  isFavorite: boolean;
-  description: string;
-  ingredients: string;
-  imgSrc: ImageSourcePropType | null;
-  bgColor?: string;
-}
+export type { FruitDish };
 
 export const categories = ["Fresh" , "Cooked" , "Drinks" , "Savory"]
 

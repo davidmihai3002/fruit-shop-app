@@ -1,16 +1,9 @@
-import fruitDishes, { FruitDish } from "@/hard-coded/hardCodedValues";
+import fruitDishes from "@/hard-coded/hardCodedValues";
+import { ProductsContextProps } from "@/lib/types/contexts";
+import { FruitDish } from "@/lib/types/models";
 import { useRouter } from "expo-router";
 import { createContext, useCallback, useEffect, useState } from "react";
 import { useNotifications } from "../hooks/useNotifications";
-export interface ProductsContextProps {
-  products: FruitDish[] | null;
-  cartItems: FruitDish[];
-  setCartItems: React.Dispatch<React.SetStateAction<FruitDish[]>>;
-  addToCart: (productId: number, productQty?: number) => void;
-  cartTotal: () => number;
-  orderNow: () => void;
-  addToFavorite: (productId: number) => void;
-}
 
 export const ProductsContext = createContext<ProductsContextProps | null>(null);
 

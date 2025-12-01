@@ -1,3 +1,5 @@
+import { qtyModifierStyles } from "@/lib/styles/products/QtyModifierStyles";
+import { QtyModifierProps } from "@/lib/types/components/products";
 import { Minus, Plus } from "lucide-react-native";
 import { Text, View } from "react-native";
 
@@ -6,68 +8,24 @@ export const QtyModifier = ({
   quantity,
   increaseQuantity,
   decreaseQuantity,
-}: {
-  price: number;
-  quantity: number;
-  increaseQuantity: () => void;
-  decreaseQuantity: () => void;
-}) => {
+}: QtyModifierProps) => {
   return (
-    <View
-      style={{
-        width: "100%",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <View
-        style={{
-          width: 200,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <View
-          style={{
-            padding: 8,
-            borderRadius: 50,
-            backgroundColor: "white",
-            borderWidth: 2,
-            borderColor: "black",
-          }}
-        >
+    <View style={qtyModifierStyles.container}>
+      <View style={qtyModifierStyles.controlsContainer}>
+        <View style={qtyModifierStyles.minusButton}>
           <Minus onPress={decreaseQuantity} />
         </View>
 
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: 500,
-          }}
-        >
+        <Text style={qtyModifierStyles.quantityText}>
           {quantity}
         </Text>
 
-        <View
-          style={{
-            padding: 10,
-            borderRadius: 50,
-            backgroundColor: "#FFF7F0",
-          }}
-        >
+        <View style={qtyModifierStyles.plusButton}>
           <Plus color={"#FFA451"} onPress={increaseQuantity} />
         </View>
       </View>
 
-      <Text
-        style={{
-          fontSize: 24,
-          fontWeight: 500,
-          color: "#FFA451",
-        }}
-      >
+      <Text style={qtyModifierStyles.priceText}>
         ${price * quantity}
       </Text>
     </View>

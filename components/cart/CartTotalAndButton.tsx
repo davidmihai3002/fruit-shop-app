@@ -1,4 +1,5 @@
 import { useProducts } from '@/lib/hooks/useProducts'
+import { cartTotalAndButtonStyles } from '@/lib/styles/cart/CartTotalAndButtonStyles'
 import { useRouter } from 'expo-router'
 import React from 'react'
 import { Text, View } from 'react-native'
@@ -10,35 +11,16 @@ const CartTotalAndButton = () => {
 
     const cartTotalValue = cartTotal();
   return (
-    <View style={{
-        width: "100%",
-        flexDirection: "row",
-        gap: 24,
-        justifyContent: "space-between",
-        paddingHorizontal: 24,
-        alignItems: "flex-start",
-        paddingTop: 24,
-        backgroundColor: "white",
-        height: 150,
-    }}>
+    <View style={cartTotalAndButtonStyles.container}>
 
-        <View style={{
-            gap: 5
-        }}>
-            <Text style={{
-                fontWeight: 500
-            }}>Total</Text>
-            <Text style={{
-                fontWeight: 600,
-                fontSize: 20
-            }}>${cartTotalValue}</Text>
+        <View style={cartTotalAndButtonStyles.totalSection}>
+            <Text style={cartTotalAndButtonStyles.totalLabel}>Total</Text>
+            <Text style={cartTotalAndButtonStyles.totalValue}>${cartTotalValue}</Text>
         </View>
 
         
 
-        <View style={{
-            width: 200
-        }}>
+        <View style={cartTotalAndButtonStyles.buttonWrapper}>
             <MainButton text='Checkout' method={()=> router.push("/checkout")}/>
         </View>
         

@@ -1,9 +1,5 @@
+import { UserContextProps } from "@/lib/types/contexts";
 import { createContext, useState } from "react";
-
-export interface UserContextProps {
-  user: string | null;
-  setUser: React.Dispatch<React.SetStateAction<string | null>>;
-}
 
 export const UserContext = createContext<UserContextProps | null>(null);
 

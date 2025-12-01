@@ -1,3 +1,5 @@
+import { individualCartItemStyles } from "@/lib/styles/cart/IndividualCartItemStyles";
+import { IndividualCartItemProps } from "@/lib/types/components/cart";
 import { Image, Text, View } from "react-native";
 import dish3 from "../../assets/images/dish3.png";
 
@@ -6,72 +8,30 @@ export const IndividualCartItem = ({
   quantity,
   price,
   bgColor,
-}: {
-  name: string;
-  quantity: number;
-  price: number;
-  bgColor?: string;
-}) => {
+}: IndividualCartItemProps) => {
   return (
-    <View
-      style={{
-        paddingHorizontal: 24,
-        width: "100%",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingVertical: 30,
-      }}
-    >
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: "50%",
-          alignItems: "center",
-          gap: 15,
-        }}
-      >
+    <View style={individualCartItemStyles.container}>
+      <View style={individualCartItemStyles.leftSection}>
         <View
-          style={{
-            width: 64,
-            height: 64,
-            borderRadius: 12,
-            backgroundColor: bgColor ? bgColor : "white",
-            alignItems: "center",
-            justifyContent: "center",
-            elevation: 2,
-          }}
+          style={[
+            individualCartItemStyles.imageContainer,
+            { backgroundColor: bgColor ? bgColor : "white" },
+          ]}
         >
           <Image
             source={dish3}
-            style={{
-              width: 40,
-              height: 40,
-            }}
+            style={individualCartItemStyles.image}
           />
         </View>
         <View>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: 500,
-              // color: "#FFA451"
-            }}
-          >
+          <Text style={individualCartItemStyles.productName}>
             {name}
           </Text>
           <Text>{quantity + (quantity === 1 ? " pack" : " packs")}</Text>
         </View>
       </View>
 
-      <Text
-        style={{
-          fontSize: 20,
-          fontWeight: 500,
-          // color: "#FFA451"
-        }}
-      >
+      <Text style={individualCartItemStyles.priceText}>
         ${price * quantity}
       </Text>
     </View>
