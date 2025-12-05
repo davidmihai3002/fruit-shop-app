@@ -12,6 +12,7 @@ const AddToFavoriteButton = ({
   const { addToFavorite } = useProducts();
   return (
     <TouchableOpacity
+      accessibilityRole="button"
       activeOpacity={1}
       style={addToFavoriteButtonStyles.button}
       onPress={() => addToFavorite(productId)}
