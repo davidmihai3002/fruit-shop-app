@@ -1,3 +1,4 @@
+import { t } from "mobx-state-tree";
 import { ImageSourcePropType } from "react-native";
 
 export interface FruitDish {
@@ -13,6 +14,19 @@ export interface FruitDish {
   imgSrc: ImageSourcePropType | null;
   bgColor?: string;
 }
+export const FruitDishType = t.model("FruitDish", {
+  id: t.number,
+  dishName: t.string,
+  dishPrice: t.number,
+  category: t.enumeration(["fresh", "cooked", "drinks", "savory"]),
+  qty: t.number,
+  isHot: t.boolean,
+  isFavorite: t.boolean,
+  description: t.string,
+  ingredients: t.string,
+  imgSrc: t.maybeNull(t.frozen<ImageSourcePropType>()),
+  bgColor: t.maybe(t.string),
+});
 
 export interface OrderProps {
   name: string;
@@ -20,4 +34,3 @@ export interface OrderProps {
   phoneNumber: number;
   orderedProducts: FruitDish[];
 }
-
