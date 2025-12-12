@@ -14,7 +14,7 @@ const AppDashboard = observer(() => {
   });
   return (
     <ScrollView contentContainerStyle={dashboardPageStyles.scrollViewContent}>
-      <DashboardHeader store={productsStore} />
+      <DashboardHeader />
       <SearchDishes />
       <RecommendedProductsSection store={productsStore} />
       <ProductsByCategorySection store={productsStore} />

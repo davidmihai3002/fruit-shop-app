@@ -1,5 +1,5 @@
-import { useUser } from "@/lib/hooks/useUser";
-import { ProductsStoreType } from "@/lib/stores/ProductsStore";
+import { productsStore } from "@/lib/stores/ProductsStore";
+import { userStore } from "@/lib/stores/UserStore";
 import { dashboardHeaderStyles } from "@/lib/styles/user/DashboardHeaderStyles";
 import { useRouter } from "expo-router";
 import { ShoppingBasket } from "lucide-react-native";
@@ -7,10 +7,10 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const DashboardHeader = observer(({ store }: { store: ProductsStoreType }) => {
-  const { user } = useUser();
+const DashboardHeader = observer(() => {
+  const user = userStore.user;
   const router = useRouter();
-  const cartItems = store.cartItems;
+  const cartItems = productsStore.cartItems;
   return (
     <View style={dashboardHeaderStyles.container}>
       <Text style={dashboardHeaderStyles.greetingText}>

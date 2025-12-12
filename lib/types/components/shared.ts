@@ -1,4 +1,3 @@
-import React from "react";
 import { ViewStyle } from "react-native";
 
 export interface MainButtonProps {
@@ -9,7 +8,7 @@ export interface MainButtonProps {
 export interface MainInputProps {
   value?: string;
   placeholder?: string;
-  onChange?: React.Dispatch<React.SetStateAction<string | null>>;
+  onChange?: (value: string) => void;
   onPress?: () => void;
 }
 

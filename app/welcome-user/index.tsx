@@ -2,18 +2,17 @@ import MainButton from "@/components/shared/MainButton";
 import MainInput from "@/components/shared/MainInput";
 import WelcomeIlustrationSection from "@/components/user/WelcomeIlustrationSection";
 import WelcomeTextComponent from "@/components/user/WelcomeTextComponent";
-import { useUser } from "@/lib/hooks/useUser";
+import { userStore } from "@/lib/stores/UserStore";
 import { welcomeUserPageStyles } from "@/lib/styles/pages/WelcomeUserPageStyles";
 import { useRouter } from "expo-router";
+import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import { Keyboard, Text, TouchableWithoutFeedback, View } from "react-native";
 import fruits2 from "../../assets/images/fruits2.png";
 
-const WelcomeUserPage = () => {
+const WelcomeUserPage = observer(() => {
   const [isUserWriting, setIsUserWriting] = useState<boolean>(false);
   const router = useRouter();
-
-  const { user, setUser } = useUser();
 
   return (
     <TouchableWithoutFeedback
@@ -41,9 +40,9 @@ const WelcomeUserPage = () => {
                 What is your firstname?
               </Text>
               <MainInput
-                value={user!}
+                value={userStore.user!}
                 placeholder={"Your name"}
-                onChange={setUser}
+                onChange={userStore.setUser}
                 onPress={() => setIsUserWriting(true)}
               />
             </View>
@@ -57,6 +56,6 @@ const WelcomeUserPage = () => {
       </View>
     </TouchableWithoutFeedback>
   );
-};
+});
 
 export default WelcomeUserPage;
