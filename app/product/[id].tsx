@@ -53,6 +53,7 @@ const ProductPage = observer(() => {
         <ProductPageActionButtons
           productId={Number(id)}
           productQty={quantity}
+          isFavorite={chosenProduct?.isFavorite!}
         />
       </View>
     </View>

@@ -7,15 +7,10 @@ import AddToFavoriteButton from "../shared/AddToFavoriteButton";
 import MainButton from "../shared/MainButton";
 
 export const ProductPageActionButtons = observer(
-  ({ productId, productQty }: ProductPageActionButtonsProps) => {
-    const product = productsStore.findProductById(productId);
-
+  ({ productId, productQty, isFavorite }: ProductPageActionButtonsProps) => {
     return (
       <View style={productPageActionButtonsStyles.container}>
-        <AddToFavoriteButton
-          isFavorite={product?.isFavorite!}
-          productId={product?.id!}
-        />
+        <AddToFavoriteButton isFavorite={isFavorite} productId={productId} />
         <View style={productPageActionButtonsStyles.buttonWrapper}>
           <MainButton
             text="Add to basket"

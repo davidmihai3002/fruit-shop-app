@@ -20,6 +20,7 @@ export interface ProductDescriptionProps {
 export interface ProductPageActionButtonsProps {
   productId: number;
   productQty: number;
+  isFavorite: boolean;
 }
 
 export interface QtyModifierProps {
