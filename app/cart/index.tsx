@@ -1,23 +1,23 @@
-import CartHeader from '@/components/cart/CartHeader';
-import CartItemList from '@/components/cart/CartItemList';
-import CartTotalAndButton from '@/components/cart/CartTotalAndButton';
-import NoCartItems from '@/components/cart/NoCartItems';
-import { useProducts } from '@/lib/hooks/useProducts';
-import { cartPageStyles } from '@/lib/styles/pages/CartPageStyles';
-import React from 'react';
-import { View } from 'react-native';
+import CartHeader from "@/components/cart/CartHeader";
+import CartItemList from "@/components/cart/CartItemList";
+import CartTotalAndButton from "@/components/cart/CartTotalAndButton";
+import NoCartItems from "@/components/cart/NoCartItems";
+import { productsStore, ProductsStoreType } from "@/lib/stores/ProductsStore";
+import { cartPageStyles } from "@/lib/styles/pages/CartPageStyles";
+import { observer } from "mobx-react-lite";
+import React from "react";
+import { View } from "react-native";
 
-const CartPage = () => {
-
-    const {cartItems} = useProducts();
+const CartPage = observer((store: ProductsStoreType) => {
+  const cartItemsLength = store.cartLength;
   return (
     <View style={cartPageStyles.container}>
-    <CartHeader title='My Basket'/>
-    {cartItems.length > 0 && <CartItemList/>}
-    {cartItems.length > 0 && <CartTotalAndButton/>}
-    {cartItems.length === 0 && <NoCartItems/>}
+      <CartHeader title="My Basket" />
+      {cartItemsLength > 0 && <CartItemList store={productsStore} />}
+      {cartItemsLength > 0 && <CartTotalAndButton store={productsStore} />}
+      {cartItemsLength === 0 && <NoCartItems />}
     </View>
-  )
-}
+  );
+});
 
-export default CartPage
+export default CartPage;

@@ -2,6 +2,7 @@ import { FruitDish } from "@/lib/types/models";
 
 export type { FruitDish };
 
+export type Category = "fresh" | "cooked" | "drinks" | "savory";
 export const categories = ["Fresh", "Cooked", "Drinks", "Savory"];
 
 export const fruitDishes: FruitDish[] = [

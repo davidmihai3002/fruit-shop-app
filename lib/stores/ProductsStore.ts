@@ -1,11 +1,10 @@
 import fruitDishes from "@/hard-coded/hardCodedValues";
-import { useRouter } from "expo-router";
-import { cast, t } from "mobx-state-tree";
+import { cast, Instance, t } from "mobx-state-tree";
 import { FruitDish, FruitDishType } from "../types/models";
 
-const router = useRouter();
+export type ProductsStoreType = Instance<typeof productsStore>;
 
-export const productsStore = t
+export const ProductsModel = t
   .model("Product", {
     products: t.maybeNull(t.array(FruitDishType)),
     cartItems: t.optional(t.array(FruitDishType), []),
@@ -15,7 +14,13 @@ export const productsStore = t
       return fruitDishes;
     },
     get cartTotal() {
-      return self.cartItems.reduce((total, item) => total + item.dishPrice, 0);
+      return self.cartItems.reduce(
+        (total, item) => total + item.dishPrice * item.qty,
+        0
+      );
+    },
+    get cartLength() {
+      return self.cartItems.length;
     },
   }))
   .actions((self) => {
@@ -28,16 +33,15 @@ export const productsStore = t
       self.cartItems = cast(data);
     }
     function addToCart(productId: number, productQty: number = 1) {
-      let cart = self.cartItems;
       const productToCart = products?.find(
         (product) => product.id === productId
       );
       if (!productToCart) return;
-      const existingItem = cart.find(
+      const existingItem = self.cartItems.find(
         (cartElement) => cartElement.id === productToCart.id
       );
       if (!existingItem) {
-        cart = cast([...cart, { ...productToCart, qty: productQty }]);
+        self.cartItems.push({ ...productToCart, qty: productQty });
       } else {
         existingItem.qty += productQty;
       }
@@ -51,9 +55,17 @@ export const productsStore = t
       productToFavorite.isFavorite = !productToFavorite.isFavorite;
       //TODO: add notifications
     }
+    function findProductById(productId: number) {
+      return products.find((product) => product.id === productId);
+    }
+    function filterProductsByCategory(
+      category: "fresh" | "cooked" | "drinks" | "savory"
+    ) {
+      return products.filter((product) => product.category === category);
+    }
     function orderNow() {
       setCartTo([]);
-      router.push("/dashboard");
+      return true;
     }
 
     return {
@@ -61,6 +73,13 @@ export const productsStore = t
       setCartTo,
       addToCart,
       addToFavorite,
+      findProductById,
+      filterProductsByCategory,
       orderNow,
     };
   });
+
+export const productsStore = ProductsModel.create({
+  products: [],
+  cartItems: [],
+});

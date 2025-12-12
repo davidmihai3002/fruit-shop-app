@@ -1,3 +1,4 @@
+import { ProductsStoreType } from "@/lib/stores/ProductsStore";
 import React from "react";
 import { ViewStyle } from "react-native";
 
@@ -18,6 +19,7 @@ export interface GoBackButtonProps {
 }
 
 export interface AddToFavoriteButtonProps {
+  store: ProductsStoreType;
   isFavorite: boolean;
   productId: number;
 }

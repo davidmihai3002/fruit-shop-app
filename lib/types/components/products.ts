@@ -1,6 +1,8 @@
+import { ProductsStoreType } from "@/lib/stores/ProductsStore";
 import { ImageSourcePropType } from "react-native";
 
 export interface ProductCardProps {
+  store: ProductsStoreType;
   dishId: number;
   isFavorite: boolean;
   imgSrc: ImageSourcePropType;
@@ -16,9 +18,9 @@ export interface ProductDescriptionProps {
 }
 
 export interface ProductPageActionButtonsProps {
+  store: ProductsStoreType;
   productId: number;
   productQty: number;
-  isFavorite: boolean;
 }
 
 export interface QtyModifierProps {
@@ -27,4 +29,3 @@ export interface QtyModifierProps {
   increaseQuantity: () => void;
   decreaseQuantity: () => void;
 }
-

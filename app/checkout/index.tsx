@@ -1,7 +1,8 @@
 import CartHeader from "@/components/cart/CartHeader";
+import CheckoutTotal from "@/components/cart/CheckoutTotal";
 import MainButton from "@/components/shared/MainButton";
 import MainInput from "@/components/shared/MainInput";
-import { useProducts } from "@/lib/hooks/useProducts";
+import { productsStore } from "@/lib/stores/ProductsStore";
 import { checkoutPageStyles } from "@/lib/styles/pages/CheckoutPageStyles";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -9,11 +10,6 @@ import { Text, View } from "react-native";
 
 const CheckoutPage = () => {
   const router = useRouter();
-
-  const { cartTotal } = useProducts();
-
-  const orderTotal = cartTotal();
-
   return (
     <View style={checkoutPageStyles.container}>
       <CartHeader title="Checkout" />
@@ -34,9 +30,7 @@ const CheckoutPage = () => {
           <MainInput placeholder="Enter number" />
         </View>
 
-        <Text style={checkoutPageStyles.totalText}>
-          {"Total: $" + orderTotal}
-        </Text>
+        <CheckoutTotal store={productsStore} />
 
         <MainButton
           text="Pay cash"
