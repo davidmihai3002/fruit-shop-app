@@ -23,8 +23,6 @@ export const ProductsModel = t
     },
   }))
   .actions((self) => {
-    const products = self.allProducts;
-
     function setProductsTo(data: FruitDish[]) {
       self.products = cast(data);
     }
@@ -32,6 +30,8 @@ export const ProductsModel = t
       self.cartItems = cast(data);
     }
     function addToCart(productId: number, productQty: number = 1) {
+      const products = self.allProducts;
+
       const productToCart = products?.find(
         (product) => product.id === productId
       );
@@ -55,11 +55,12 @@ export const ProductsModel = t
       //TODO: add notifications
     }
     function findProductById(productId: number) {
-      return products.find((product) => product.id === productId);
+      return self.products!.find((product) => product.id === productId);
     }
     function filterProductsByCategory(
       category: "fresh" | "cooked" | "drinks" | "savory"
     ) {
+      const products = self.allProducts;
       return products.filter((product) => product.category === category);
     }
     function orderNow() {
