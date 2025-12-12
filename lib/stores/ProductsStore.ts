@@ -14,10 +14,9 @@ export const ProductsModel = t
       return fruitDishes;
     },
     get cartTotal() {
-      return self.cartItems.reduce(
-        (total, item) => total + item.dishPrice * item.qty,
-        0
-      );
+      return self.cartItems
+        .reduce((total, item) => total + item.dishPrice * item.qty, 0)
+        .toFixed(2);
     },
     get cartLength() {
       return self.cartItems.length;
@@ -48,7 +47,7 @@ export const ProductsModel = t
       //TODO: add notifications
     }
     function addToFavorite(productId: number) {
-      const productToFavorite = products?.find(
+      const productToFavorite = self.products?.find(
         (product) => product.id === productId
       );
       if (!productToFavorite) return;

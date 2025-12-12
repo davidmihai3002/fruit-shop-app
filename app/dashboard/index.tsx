@@ -2,19 +2,23 @@ import ProductsByCategorySection from "@/components/products/ProductsByCategoryS
 import RecommendedProductsSection from "@/components/products/RecommendedProductsSection";
 import SearchDishes from "@/components/products/SearchDishes";
 import DashboardHeader from "@/components/user/DashboardHeader";
+import { productsStore } from "@/lib/stores/ProductsStore";
 import { dashboardPageStyles } from "@/lib/styles/pages/DashboardPageStyles";
-import React from "react";
+import { observer } from "mobx-react-lite";
+import React, { useEffect } from "react";
 import { ScrollView } from "react-native";
 
-const AppDashboard = () => {
+const AppDashboard = observer(() => {
+  useEffect(() => {
+    productsStore.setProductsTo(productsStore.allProducts);
+  });
   return (
     <ScrollView contentContainerStyle={dashboardPageStyles.scrollViewContent}>
-      <DashboardHeader />
+      <DashboardHeader store={productsStore} />
       <SearchDishes />
-      <RecommendedProductsSection />
-      <ProductsByCategorySection />
+      <RecommendedProductsSection store={productsStore} />
+      <ProductsByCategorySection store={productsStore} />
     </ScrollView>
   );
-};
-
+});
 export default AppDashboard;

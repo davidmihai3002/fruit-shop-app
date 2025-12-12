@@ -18,7 +18,6 @@ export interface ProductDescriptionProps {
 }
 
 export interface ProductPageActionButtonsProps {
-  store: ProductsStoreType;
   productId: number;
   productQty: number;
 }

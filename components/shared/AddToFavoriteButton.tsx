@@ -1,3 +1,4 @@
+import { productsStore } from "@/lib/stores/ProductsStore";
 import { addToFavoriteButtonStyles } from "@/lib/styles/shared/AddToFavoriteButtonStyles";
 import { AddToFavoriteButtonProps } from "@/lib/types/components/shared";
 import { Heart } from "lucide-react-native";
@@ -5,7 +6,6 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 
 const AddToFavoriteButton = ({
-  store,
   isFavorite,
   productId,
 }: AddToFavoriteButtonProps) => {
@@ -14,7 +14,7 @@ const AddToFavoriteButton = ({
       accessibilityRole="button"
       activeOpacity={1}
       style={addToFavoriteButtonStyles.button}
-      onPress={() => store.addToFavorite(productId)}
+      onPress={() => productsStore.addToFavorite(productId)}
     >
       <Heart color={"#FFA451"} fill={isFavorite ? "#FFA451" : "transparent"} />
     </TouchableOpacity>

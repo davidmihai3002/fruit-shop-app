@@ -3,7 +3,7 @@ import { ProductPageActionButtons } from "@/components/products/ProductPageActio
 import { QtyModifier } from "@/components/products/QtyModifier";
 import GoBackButton from "@/components/shared/GoBackButton";
 import { Separator } from "@/components/shared/Separator";
-import { productsStore, ProductsStoreType } from "@/lib/stores/ProductsStore";
+import { productsStore } from "@/lib/stores/ProductsStore";
 import { productPageStyles } from "@/lib/styles/pages/ProductPageStyles";
 import { useLocalSearchParams } from "expo-router";
 import { observer } from "mobx-react-lite";
@@ -11,10 +11,10 @@ import React, { useCallback, useState } from "react";
 import { Image, Text, View } from "react-native";
 import dish3 from "../../assets/images/dish3.png";
 
-const ProductPage = observer(({ store }: { store: ProductsStoreType }) => {
+const ProductPage = observer(() => {
   const { id } = useLocalSearchParams();
-  const chosenProduct = store.findProductById(Number(id));
-  const [quantity, setQuantity] = useState<number>(chosenProduct?.qty ?? 1);
+  const chosenProduct = productsStore.findProductById(Number(id));
+  const [quantity, setQuantity] = useState<number>(1);
 
   const increaseQuantity = useCallback(() => {
     setQuantity((prev) => prev + 1);
@@ -51,7 +51,6 @@ const ProductPage = observer(({ store }: { store: ProductsStoreType }) => {
         />
 
         <ProductPageActionButtons
-          store={productsStore}
           productId={Number(id)}
           productQty={quantity}
         />
