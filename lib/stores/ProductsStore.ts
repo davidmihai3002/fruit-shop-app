@@ -1,6 +1,7 @@
 import fruitDishes from "@/hard-coded/hardCodedValues";
 import { cast, Instance, t } from "mobx-state-tree";
 import { FruitDish, FruitDishType } from "../types/models";
+import { notificationsStore } from "./NotificationsStore";
 
 export type ProductsStoreType = Instance<typeof productsStore>;
 
@@ -44,7 +45,8 @@ export const ProductsModel = t
       } else {
         existingItem.qty += productQty;
       }
-      //TODO: add notifications
+
+      notificationsStore.notification("Your item was added to cart");
     }
     function addToFavorite(productId: number) {
       const productToFavorite = self.products?.find(
@@ -52,7 +54,11 @@ export const ProductsModel = t
       );
       if (!productToFavorite) return;
       productToFavorite.isFavorite = !productToFavorite.isFavorite;
-      //TODO: add notifications
+      notificationsStore.notification(
+        productToFavorite?.isFavorite
+          ? "You have a new favorite!"
+          : "Choose another favorite!"
+      );
     }
     function findProductById(productId: number) {
       return self.products!.find((product) => product.id === productId);
