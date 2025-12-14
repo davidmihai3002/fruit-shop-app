@@ -18,7 +18,7 @@ const ProductsByCategorySection = observer(
 
     useEffect(() => {
       setProductsToDisplay(store.filterProductsByCategory(selectedCategory));
-    }, [selectedCategory, products]);
+    }, [selectedCategory, products, store]);
 
     return (
       <View style={productsByCategorySectionStyles.container}>
