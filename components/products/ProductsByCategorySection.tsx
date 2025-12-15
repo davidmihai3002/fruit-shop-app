@@ -19,7 +19,7 @@ const ProductsByCategorySection = observer(() => {
     setProductsToDisplay(
       productsStore.filterProductsByCategory(selectedCategory)
     );
-  }, [selectedCategory, products, productsStore]);
+  }, [selectedCategory, products]);
 
   return (
     <View style={productsByCategorySectionStyles.container}>
