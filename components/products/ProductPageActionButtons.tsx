@@ -1,4 +1,4 @@
-import { productsStore } from "@/lib/stores/ProductsStore";
+import { cartStore } from "@/lib/stores/CartStore";
 import { productPageActionButtonsStyles } from "@/lib/styles/products/ProductPageActionButtonsStyles";
 import { ProductPageActionButtonsProps } from "@/lib/types/components/products";
 import { observer } from "mobx-react-lite";
@@ -14,7 +14,7 @@ export const ProductPageActionButtons = observer(
         <View style={productPageActionButtonsStyles.buttonWrapper}>
           <MainButton
             text="Add to basket"
-            method={() => productsStore.addToCart(productId, productQty)}
+            method={() => cartStore.addToCart(productId, productQty)}
           />
         </View>
       </View>

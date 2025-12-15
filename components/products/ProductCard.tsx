@@ -1,3 +1,5 @@
+import { cartStore } from "@/lib/stores/CartStore";
+import { productsStore } from "@/lib/stores/ProductsStore";
 import { productCardStyles } from "@/lib/styles/products/ProductCardStyles";
 import { ProductCardProps } from "@/lib/types/components/products";
 import { useRouter } from "expo-router";
@@ -5,7 +7,6 @@ import { Heart, Plus } from "lucide-react-native";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 const ProductCard = ({
-  store,
   dishId,
   isFavorite,
   imgSrc,
@@ -34,7 +35,7 @@ const ProductCard = ({
           style={productCardStyles.favoriteIcon}
           fill={isFavorite ? "#FFA451" : "transparent"}
           color={"#FFA451"}
-          onPress={() => store.addToFavorite(dishId)}
+          onPress={() => productsStore.addToFavorite(dishId)}
         />
       )}
 
@@ -46,7 +47,7 @@ const ProductCard = ({
           <TouchableOpacity
             activeOpacity={1}
             style={productCardStyles.addButton}
-            onPress={() => store.addToCart(dishId)}
+            onPress={() => cartStore.addToCart(dishId)}
           >
             <Plus size={20} color={"#FFA451"} />
           </TouchableOpacity>

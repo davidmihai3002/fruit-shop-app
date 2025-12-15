@@ -1,11 +1,11 @@
-import { productsStore } from "@/lib/stores/ProductsStore";
+import { cartStore } from "@/lib/stores/CartStore";
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { ScrollView } from "react-native";
 import { IndividualCartItem } from "./IndividualCartItem";
 
 const CartItemList = observer(() => {
-  const cart = productsStore.cartItems;
+  const cart = cartStore.cartItems;
   return (
     <ScrollView>
       {cart.map((product) => (

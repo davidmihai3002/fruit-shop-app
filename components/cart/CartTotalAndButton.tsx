@@ -1,4 +1,4 @@
-import { productsStore } from "@/lib/stores/ProductsStore";
+import { cartStore } from "@/lib/stores/CartStore";
 import { cartTotalAndButtonStyles } from "@/lib/styles/cart/CartTotalAndButtonStyles";
 import { useRouter } from "expo-router";
 import { observer } from "mobx-react-lite";
@@ -8,7 +8,7 @@ import MainButton from "../shared/MainButton";
 
 const CartTotalAndButton = observer(() => {
   const router = useRouter();
-  const cartTotalValue = productsStore.cartTotal;
+  const cartTotalValue = cartStore.cartTotal;
   return (
     <View style={cartTotalAndButtonStyles.container}>
       <View style={cartTotalAndButtonStyles.totalSection}>

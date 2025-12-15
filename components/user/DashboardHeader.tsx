@@ -1,4 +1,4 @@
-import { productsStore } from "@/lib/stores/ProductsStore";
+import { cartStore } from "@/lib/stores/CartStore";
 import { userStore } from "@/lib/stores/UserStore";
 import { dashboardHeaderStyles } from "@/lib/styles/user/DashboardHeaderStyles";
 import { useRouter } from "expo-router";
@@ -10,7 +10,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 const DashboardHeader = observer(() => {
   const user = userStore.user;
   const router = useRouter();
-  const cartItems = productsStore.cartItems;
+  const cartItems = cartStore.cartItems;
   return (
     <View style={dashboardHeaderStyles.container}>
       <Text style={dashboardHeaderStyles.greetingText}>

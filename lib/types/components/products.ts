@@ -1,8 +1,6 @@
-import { ProductsStoreType } from "@/lib/stores/ProductsStore";
 import { ImageSourcePropType } from "react-native";
 
 export interface ProductCardProps {
-  store: ProductsStoreType;
   dishId: number;
   isFavorite: boolean;
   imgSrc: ImageSourcePropType;
