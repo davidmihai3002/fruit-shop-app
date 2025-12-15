@@ -5,6 +5,77 @@ export type { FruitDish };
 export type Category = "fresh" | "cooked" | "drinks" | "savory";
 export const categories = ["Fresh", "Cooked", "Drinks", "Savory"];
 
+export const mockFruitDishesForTesting: FruitDish[] = [
+  {
+    id: 1,
+    dishName: "Mango Sticky Rice",
+    dishPrice: 14,
+    category: "cooked",
+    qty: 2,
+    isHot: true,
+    isFavorite: true,
+    description:
+      "Sweet glutinous rice with fresh mango slices and coconut milk.",
+    ingredients: "Sticky rice, mango, coconut milk, sugar, sesame seeds",
+    imgSrc: null,
+    bgColor: "#FFF8E1",
+  },
+  {
+    id: 2,
+    dishName: "Super Berry Smoothie",
+    dishPrice: 8.0,
+    category: "drinks",
+    qty: 1,
+    isHot: false,
+    isFavorite: false,
+    description:
+      "A refreshing blend of strawberries, blueberries, and raspberries.",
+    ingredients: "Strawberries, blueberries, raspberries, yogurt, honey",
+    imgSrc: null,
+    bgColor: "#F3E5F5",
+  },
+  {
+    id: 3,
+    dishName: "Watermelon Feta Salad",
+    dishPrice: 10.0,
+    category: "savory",
+    qty: 3,
+    isHot: false,
+    isFavorite: true,
+    description: "A savory summer salad with mint and balsamic glaze.",
+    ingredients:
+      "Watermelon, feta cheese, mint leaves, balsamic glaze, cucumber",
+    imgSrc: null,
+    bgColor: "#E8F5E9",
+  },
+  {
+    id: 4,
+    dishName: "Tropical Fruit Bowl",
+    dishPrice: 15.0,
+    category: "fresh",
+    qty: 1,
+    isHot: false,
+    isFavorite: false,
+    description: "Seasonal tropical fruits served with a side of lime wedges.",
+    ingredients: "Pineapple, papaya, dragon fruit, kiwi, passion fruit",
+    imgSrc: null,
+    bgColor: "#FFF3E0",
+  },
+  {
+    id: 5,
+    dishName: "Spiced Poached Pears",
+    dishPrice: 14.0,
+    category: "cooked",
+    qty: 4,
+    isHot: true,
+    isFavorite: false,
+    description: "Pears gently poached in cinnamon and vanilla syrup.",
+    ingredients: "Bosc pears, cinnamon sticks, vanilla bean, star anise, sugar",
+    imgSrc: null,
+    bgColor: "#FBE9E7",
+  },
+];
+
 export const fruitDishes: FruitDish[] = [
   // Fresh Category
   {

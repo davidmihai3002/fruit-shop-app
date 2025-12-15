@@ -1,7 +1,6 @@
 import fruitDishes from "@/hard-coded/hardCodedValues";
 import { cast, Instance, t } from "mobx-state-tree";
 import { FruitDish, FruitDishType } from "../types/models";
-import { cartStore } from "./CartStore";
 import { notificationsStore } from "./NotificationsStore";
 
 export type ProductsStoreType = Instance<typeof productsStore>;
@@ -37,12 +36,7 @@ export const ProductsModel = t
     function filterProductsByCategory(
       category: "fresh" | "cooked" | "drinks" | "savory"
     ) {
-      const products = self.allProducts;
-      return products.filter((product) => product.category === category);
-    }
-    function orderNow() {
-      cartStore.setCartTo([]);
-      return true;
+      return self.products!.filter((product) => product.category === category);
     }
 
     return {
@@ -50,7 +44,6 @@ export const ProductsModel = t
       addToFavorite,
       findProductById,
       filterProductsByCategory,
-      orderNow,
     };
   });
 

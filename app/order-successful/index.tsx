@@ -1,5 +1,5 @@
 import MainButton from "@/components/shared/MainButton";
-import { productsStore } from "@/lib/stores/ProductsStore";
+import { cartStore } from "@/lib/stores/CartStore";
 import { orderSuccessfulPageStyles } from "@/lib/styles/pages/OrderSuccessfulPageStyles";
 import { useRouter } from "expo-router";
 import { observer } from "mobx-react-lite";
@@ -8,7 +8,7 @@ import { Image, Text, View } from "react-native";
 import successfulOrder from "../../assets/images/sucessful-order.png";
 
 const OrderSuccessfulPage = observer(() => {
-  const order = productsStore.orderNow;
+  const order = cartStore.orderNow;
   const router = useRouter();
   return (
     <View style={orderSuccessfulPageStyles.container}>

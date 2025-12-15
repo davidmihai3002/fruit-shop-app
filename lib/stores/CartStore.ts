@@ -39,10 +39,14 @@ export const CartModel = t
 
       notificationsStore.notification("Your item was added to cart");
     }
+    function orderNow() {
+      cartStore.setCartTo([]);
+    }
 
     return {
       setCartTo,
       addToCart,
+      orderNow,
     };
   });
 
