@@ -1,6 +1,7 @@
 import fruitDishes from "@/hard-coded/hardCodedValues";
 import { cast, Instance, t } from "mobx-state-tree";
-import { FruitDish, FruitDishType } from "../types/models";
+import { api } from "../api/apiClient";
+import { Fruit, FruitDish, FruitDishType } from "../types/models";
 import { notificationsStore } from "./NotificationsStore";
 
 export type ProductsStoreType = Instance<typeof productsStore>;
@@ -15,6 +16,15 @@ export const ProductsModel = t
     },
   }))
   .actions((self) => {
+    async function load() {
+      const res = await api.get("/api/fruit/all");
+      if (res.ok) {
+        return res.data as Fruit[];
+      } else {
+        console.log("Problem", res.problem);
+        return null;
+      }
+    }
     function setProductsTo(data: FruitDish[]) {
       self.products = cast(data);
     }
@@ -40,6 +50,7 @@ export const ProductsModel = t
     }
 
     return {
+      load,
       setProductsTo,
       addToFavorite,
       findProductById,

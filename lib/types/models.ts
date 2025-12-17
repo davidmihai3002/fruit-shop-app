@@ -1,6 +1,23 @@
 import { t } from "mobx-state-tree";
 import { ImageSourcePropType } from "react-native";
 
+export interface Nutritions {
+  calories: number;
+  fat: number;
+  sugar: number;
+  carbohydrates: number;
+  protein: number;
+}
+
+export interface Fruit {
+  id: number;
+  name: string;
+  genus: string;
+  family: string;
+  order: string;
+  nutritions: Nutritions;
+}
+
 export interface FruitDish {
   id: number;
   dishName: string;
