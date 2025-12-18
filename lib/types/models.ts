@@ -18,6 +18,23 @@ export interface Fruit {
   nutritions: Nutritions;
 }
 
+export const NutritionsModel = t.model("FruitModel", {
+  calories: t.number,
+  fat: t.number,
+  sugar: t.number,
+  carbohydrates: t.number,
+  protein: t.number,
+});
+
+export const FruitModel = t.model("FruitModel", {
+  id: t.number,
+  name: t.string,
+  genus: t.string,
+  family: t.string,
+  order: t.string,
+  nutritions: NutritionsModel,
+});
+
 export interface FruitDish {
   id: number;
   dishName: string;

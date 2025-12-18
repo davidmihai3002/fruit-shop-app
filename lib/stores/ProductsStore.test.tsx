@@ -1,9 +1,46 @@
 import fruitDishes, {
   mockFruitDishesForTesting,
 } from "@/hard-coded/hardCodedValues";
+import { t } from "mobx-state-tree";
+import { api } from "../api/apiClient";
+import { FruitModel } from "../types/models";
 import { ProductsModel } from "./ProductsStore";
 
+jest.mock("../api/apiClient", () => ({
+  api: {
+    get: jest.fn(),
+    post: jest.fn(),
+  },
+}));
+
 describe("ProductsStore Actions Tests", () => {
+  test("load function should return an array of type Fruit", async () => {
+    const mockFruit = {
+      id: 6,
+      name: "Banana",
+      genus: "Musa",
+      family: "Musaceae",
+      order: "Zingiberales",
+      nutritions: {
+        carbohydrates: 22,
+        protein: 1,
+        fat: 0.2,
+        calories: 96,
+        sugar: 17.2,
+      },
+    };
+    (api.get as jest.Mock).mockResolvedValue({
+      ok: true,
+      data: [mockFruit],
+    });
+    const store = ProductsModel.create({
+      products: [],
+    });
+    const payload = await store.load();
+    const FruitArray = t.array(FruitModel);
+    expect(FruitArray.is(payload)).toBeTruthy();
+  });
+
   test("setProductsTo function should add any array of type FruitDish to the products", () => {
     const store = ProductsModel.create({
       products: [],
