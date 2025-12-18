@@ -46,7 +46,9 @@ export const ProductsModel = t
     function filterProductsByCategory(
       category: "fresh" | "cooked" | "drinks" | "savory"
     ) {
-      return self.products!.filter((product) => product.category === category);
+      return self.allProducts!.filter(
+        (product) => product.category === category
+      );
     }
 
     return {

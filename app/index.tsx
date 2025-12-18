@@ -31,7 +31,15 @@ const Index = () => {
       <View>
         {data.length === 0 && <Text>Loading</Text>}
 
-        {data && data!.map((fruit) => <Text key={fruit.id}>{fruit.name}</Text>)}
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          {data &&
+            data!.map((fruit) => <Text key={fruit.id}>{fruit.name}</Text>)}
+        </View>
       </View>
     </View>
   );

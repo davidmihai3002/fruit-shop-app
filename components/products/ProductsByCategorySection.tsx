@@ -1,7 +1,6 @@
-import { categories, Category } from "@/hard-coded/hardCodedValues";
+import { categories, Category, FruitDish } from "@/hard-coded/hardCodedValues";
 import { productsStore } from "@/lib/stores/ProductsStore";
 import { productsByCategorySectionStyles } from "@/lib/styles/products/ProductsByCategorySectionStyles";
-import { FruitDish } from "@/lib/types/models";
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
@@ -14,7 +13,6 @@ const ProductsByCategorySection = observer(() => {
   const [productsToDisplay, setProductsToDisplay] = useState<FruitDish[]>(
     productsStore.filterProductsByCategory(selectedCategory)
   );
-
   useEffect(() => {
     setProductsToDisplay(
       productsStore.filterProductsByCategory(selectedCategory)

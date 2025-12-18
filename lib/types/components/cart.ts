@@ -7,5 +7,5 @@ export interface IndividualCartItemProps {
   quantity: number;
   price: number;
   bgColor?: string;
+  productId: number;
 }
-

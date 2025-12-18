@@ -31,11 +31,17 @@ export interface FruitDish {
   imgSrc: ImageSourcePropType | null;
   bgColor?: string;
 }
+const CategoryEnum = t.enumeration("Category", [
+  "fresh",
+  "cooked",
+  "drinks",
+  "savory",
+]);
 export const FruitDishType = t.model("FruitDish", {
   id: t.number,
   dishName: t.string,
   dishPrice: t.number,
-  category: t.enumeration(["fresh", "cooked", "drinks", "savory"]),
+  category: CategoryEnum,
   qty: t.number,
   isHot: t.boolean,
   isFavorite: t.boolean,

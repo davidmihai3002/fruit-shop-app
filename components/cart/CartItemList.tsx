@@ -15,6 +15,7 @@ const CartItemList = observer(() => {
           name={product.dishName}
           quantity={product.qty}
           price={product.dishPrice}
+          productId={product.id}
         />
       ))}
     </ScrollView>

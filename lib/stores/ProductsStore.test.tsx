@@ -32,9 +32,9 @@ describe("ProductsStore Actions Tests", () => {
     const store = ProductsModel.create({
       products: [],
     });
-    store.setProductsTo(mockFruitDishesForTesting);
+    store.setProductsTo(store.allProducts);
     const filteredProducts = store.filterProductsByCategory("cooked");
-    expect(filteredProducts.length).toBe(2);
+    expect(filteredProducts.length).toBe(4);
   });
 });
 
