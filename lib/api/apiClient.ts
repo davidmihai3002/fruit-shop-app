@@ -1,2 +1,2 @@
 import { create } from "apisauce";
-export const api = create({ baseURL: "https://www.fruityvice.com" });
+export const apiFruits = create({ baseURL: "https://www.fruityvice.com" });

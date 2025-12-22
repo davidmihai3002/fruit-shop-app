@@ -2,7 +2,7 @@ import fruitDishes, {
   mockFruitDishesForTesting,
 } from "@/hard-coded/hardCodedValues";
 import { t } from "mobx-state-tree";
-import { api } from "../api/apiClient";
+import { apiFruits } from "../api/apiClient";
 import { FruitModel } from "../types/models";
 import { ProductsModel } from "./ProductsStore";
 
@@ -29,14 +29,14 @@ describe("ProductsStore Actions Tests", () => {
         sugar: 17.2,
       },
     };
-    (api.get as jest.Mock).mockResolvedValue({
+    (apiFruits.get as jest.Mock).mockResolvedValue({
       ok: true,
       data: [mockFruit],
     });
     const store = ProductsModel.create({
       products: [],
     });
-    const payload = await store.load();
+    const payload = await store.loadMock();
     const FruitArray = t.array(FruitModel);
     expect(FruitArray.is(payload)).toBeTruthy();
   });

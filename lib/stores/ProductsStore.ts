@@ -1,6 +1,7 @@
 import fruitDishes from "@/hard-coded/hardCodedValues";
 import { cast, Instance, t } from "mobx-state-tree";
-import { api } from "../api/apiClient";
+import { api } from "../api/api";
+import { apiFruits } from "../api/apiClient";
 import { Fruit, FruitDish, FruitDishType } from "../types/models";
 import { notificationsStore } from "./NotificationsStore";
 
@@ -10,16 +11,33 @@ export const ProductsModel = t
   .model("Product", {
     products: t.maybeNull(t.array(FruitDishType)),
   })
-  .views(() => ({
+  .views((self) => ({
+      filterProductsByCategory(
+      category: "fresh" | "cooked" | "drinks" | "savory"
+    ) {
+      if (!self.products) return [];
+    return self.products.filter(
+      (product) => product.category === category
+    );
+    },
     get allProducts() {
       return fruitDishes;
     },
   }))
   .actions((self) => {
-    async function load() {
-      const res = await api.get("/api/fruit/all");
+    async function loadMock() {
+      const res = await apiFruits.get("/api/fruit/all");
       if (res.ok) {
         return res.data as Fruit[];
+      } else {
+        console.log("Problem", res.problem);
+        return null;
+      }
+    }
+    async function loadData() {
+      const res = await api.get("/api/products")
+      if (res.ok) {
+        return res.data as FruitDish[]
       } else {
         console.log("Problem", res.problem);
         return null;
@@ -52,7 +70,8 @@ export const ProductsModel = t
     }
 
     return {
-      load,
+      loadMock,
+      loadData,
       setProductsTo,
       addToFavorite,
       findProductById,

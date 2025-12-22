@@ -1,23 +1,20 @@
 import MainButton from "@/components/shared/MainButton";
 import { productsStore } from "@/lib/stores/ProductsStore";
 import { indexPageStyles } from "@/lib/styles/pages/IndexPageStyles";
-import { Fruit } from "@/lib/types/models";
 import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 import { Text, View } from "react-native";
 
-const Index = () => {
+const Index = observer(() => {
   const router = useRouter();
-  const [data, setData] = useState<Fruit[]>([]);
   useEffect(() => {
-    console.log(productsStore.load());
-    const fetch = async () => {
-      const res = await productsStore.load();
-      if (res) {
-        setData(res);
-      }
-    };
-    fetch();
+    const hydrateProducts = async() => {
+      const data = await productsStore.loadData();
+      productsStore.setProductsTo(data!)
+      console.log(productsStore.products);
+    }
+    hydrateProducts()
   }, []);
   return (
     <View style={indexPageStyles.container}>
@@ -29,7 +26,7 @@ const Index = () => {
         }}
       />
       <View>
-        {data.length === 0 && <Text>Loading</Text>}
+        {productsStore.products!.length === 0 && <Text>Loading</Text>}
 
         <View
           style={{
@@ -37,12 +34,12 @@ const Index = () => {
             flexWrap: "wrap",
           }}
         >
-          {data &&
-            data!.map((fruit) => <Text key={fruit.id}>{fruit.name}</Text>)}
+          {productsStore.products &&
+            productsStore.products!.map((fruit) => <Text key={fruit.id}>{fruit.dishName}</Text>)}
         </View>
       </View>
     </View>
   );
-};
+});
 
 export default Index;
