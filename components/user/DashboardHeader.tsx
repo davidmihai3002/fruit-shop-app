@@ -8,7 +8,7 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 const DashboardHeader = observer(() => {
-  const user = userStore.user;
+  const user = userStore.token;
   const router = useRouter();
   const cartItems = cartStore.cartItems;
   return (

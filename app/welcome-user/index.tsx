@@ -12,6 +12,10 @@ import fruits2 from "../../assets/images/fruits2.png";
 
 const WelcomeUserPage = observer(() => {
   const [isUserWriting, setIsUserWriting] = useState<boolean>(false);
+  const logIn = async() => {
+    await userStore.logUserIn(userStore.user!)
+    router.push("/dashboard")
+  }
   const router = useRouter();
 
   return (
@@ -49,7 +53,7 @@ const WelcomeUserPage = observer(() => {
             {/* <Text>{user}</Text> */}
             <MainButton
               text="Start Ordering"
-              method={() => router.push("/dashboard")}
+              method={logIn}
             />
           </View>
         </WelcomeTextComponent>

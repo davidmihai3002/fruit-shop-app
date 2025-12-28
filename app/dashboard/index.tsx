@@ -16,8 +16,8 @@ const AppDashboard = observer(() => {
     <ScrollView contentContainerStyle={dashboardPageStyles.scrollViewContent}>
       <DashboardHeader />
       <SearchDishes />
-      <RecommendedProductsSection store={productsStore} />
-      <ProductsByCategorySection store={productsStore} />
+      <RecommendedProductsSection />
+      <ProductsByCategorySection />
     </ScrollView>
   );
 });

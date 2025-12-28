@@ -74,3 +74,7 @@ export interface OrderProps {
   phoneNumber: number;
   orderedProducts: FruitDish[];
 }
+
+export interface AuthResponse{
+    access_token: string;
+}
