@@ -26,8 +26,7 @@ const Index = observer(() => {
         }}
       />
       <View>
-        {productsStore.products!.length === 0 && <Text>Loading</Text>}
-
+        {!productsStore.products && <Text>Loading</Text>}
         <View
           style={{
             flexDirection: "row",

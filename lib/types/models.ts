@@ -68,6 +68,13 @@ export const FruitDishType = t.model("FruitDish", {
   bgColor: t.maybe(t.string),
 });
 
+export const OrdersType = t.model({
+  name: t.string,
+  address: t.string,
+  number: t.string,
+  orderedProducts: t.array(FruitDishType),
+});
+
 export interface OrderProps {
   name: string;
   address: string;
@@ -75,6 +82,6 @@ export interface OrderProps {
   orderedProducts: FruitDish[];
 }
 
-export interface AuthResponse{
-    access_token: string;
+export interface AuthResponse {
+  access_token: string;
 }
