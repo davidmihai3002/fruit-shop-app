@@ -12,13 +12,11 @@ export const ProductsModel = t
     products: t.maybeNull(t.array(FruitDishType)),
   })
   .views((self) => ({
-      filterProductsByCategory(
+    filterProductsByCategory(
       category: "fresh" | "cooked" | "drinks" | "savory"
     ) {
       if (!self.products) return [];
-    return self.products.filter(
-      (product) => product.category === category
-    );
+      return self.products.filter((product) => product.category === category);
     },
     get allProducts() {
       return fruitDishes;
@@ -35,9 +33,9 @@ export const ProductsModel = t
       }
     }
     async function loadData() {
-      const res = await api.get("/api/products")
+      const res = await api.get("/api/products");
       if (res.ok) {
-        return res.data as FruitDish[]
+        return res.data as FruitDish[];
       } else {
         console.log("Problem", res.problem);
         return null;

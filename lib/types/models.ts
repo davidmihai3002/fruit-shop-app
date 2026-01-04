@@ -69,17 +69,25 @@ export const FruitDishType = t.model("FruitDish", {
 });
 
 export const OrdersType = t.model({
+  id: t.number,
   name: t.string,
   address: t.string,
-  number: t.string,
+  phoneNumber: t.string,
   orderedProducts: t.array(FruitDishType),
 });
 
 export interface OrderProps {
+  id: number;
   name: string;
   address: string;
-  phoneNumber: number;
+  phoneNumber: string;
   orderedProducts: FruitDish[];
+}
+
+export interface DeliveryDetails {
+  name: string;
+  address: string;
+  phoneNumber: string;
 }
 
 export interface AuthResponse {

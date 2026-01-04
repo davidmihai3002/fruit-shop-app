@@ -9,12 +9,12 @@ import { Text, View } from "react-native";
 const Index = observer(() => {
   const router = useRouter();
   useEffect(() => {
-    const hydrateProducts = async() => {
+    const hydrateProducts = async () => {
       const data = await productsStore.loadData();
-      productsStore.setProductsTo(data!)
+      productsStore.setProductsTo(data!);
       console.log(productsStore.products);
-    }
-    hydrateProducts()
+    };
+    hydrateProducts();
   }, []);
   return (
     <View style={indexPageStyles.container}>
@@ -34,7 +34,9 @@ const Index = observer(() => {
           }}
         >
           {productsStore.products &&
-            productsStore.products!.map((fruit) => <Text key={fruit.id}>{fruit.dishName}</Text>)}
+            productsStore.products!.map((fruit) => (
+              <Text key={fruit.id}>{fruit.dishName}</Text>
+            ))}
         </View>
       </View>
     </View>
